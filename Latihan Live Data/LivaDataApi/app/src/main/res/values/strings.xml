@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LivaDataApi</string>
+    <string name="review">review</string>
+    <string name="send">send</string>
+    <string name="description">description</string>
+    <string name="write_your_review_here">your_review</string>
+    <string name="title">title</string>
+</resources>
