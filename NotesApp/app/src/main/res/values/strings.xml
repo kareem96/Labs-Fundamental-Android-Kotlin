@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">NotesApp</string>
+    <string name="date">Tanggal</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="submit">Submit</string>
+    <string name="delete">Delete</string>
+</resources>
