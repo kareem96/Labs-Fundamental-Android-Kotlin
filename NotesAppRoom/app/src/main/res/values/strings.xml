@@ -1,4 +1,7 @@
 <resources>
+
+    <string name="app_name">NotesAppRoom</string>
+
     <string name="title">Judul</string>
     <string name="description">Deskripsi</string>
     <string name="submit">Submit</string>

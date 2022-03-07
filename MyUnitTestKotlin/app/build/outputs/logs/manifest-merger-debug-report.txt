@@ -1,0 +1,232 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:2:1-23:12
+MERGED from [androidx.databinding:viewbinding:7.0.2] /Users/efektifpro/.gradle/caches/transforms-3/368bc708c50abe8286eab5bb52218675/transformed/jetified-viewbinding-7.0.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core-ktx:1.7.0] /Users/efektifpro/.gradle/caches/transforms-3/e7b644434c99ab8595e56305529915ef/transformed/jetified-core-ktx-1.7.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.material:material:1.5.0] /Users/efektifpro/.gradle/caches/transforms-3/3e03f7fda4c199ff595d2808a41ed90f/transformed/material-1.5.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] /Users/efektifpro/.gradle/caches/transforms-3/ae1618b33506e2daabcbc3db4df39975/transformed/constraintlayout-2.1.3/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat:1.4.1] /Users/efektifpro/.gradle/caches/transforms-3/5015ef1db687f3b1aa6571aed1b14464/transformed/appcompat-1.4.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/b9d90fd961bf28a7b5c29550224f686c/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.3.6] /Users/efektifpro/.gradle/caches/transforms-3/517139d0109b43e9697a84dfa747aabd/transformed/fragment-1.3.6/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.2.4] /Users/efektifpro/.gradle/caches/transforms-3/581498d8846c924e90ef60baeff156b2/transformed/jetified-activity-1.2.4/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.4.1] /Users/efektifpro/.gradle/caches/transforms-3/77cec5ac34c829b1ffbec185217df061/transformed/jetified-appcompat-resources-1.4.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/bcda3690264fa513ab9f95a4c48b8c90/transformed/jetified-emoji2-views-helper-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.emoji2:emoji2:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/0cfd2b4014f1699f02c55d8d77c2d794/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:17:1-37:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /Users/efektifpro/.gradle/caches/transforms-3/f3d4079b956b08b7eb3133bc794ba4a5/transformed/drawerlayout-1.1.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/efektifpro/.gradle/caches/transforms-3/0513277f7d843cd2702d564dcb97793f/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/3b2278dc5b6b8c5a11681946508c9448/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.transition:transition:1.2.0] /Users/efektifpro/.gradle/caches/transforms-3/8fe8d3536365b6cc3fbcae5e2d9db7af/transformed/transition-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/efektifpro/.gradle/caches/transforms-3/464ac139ec5855214215694df9f499eb/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/efektifpro/.gradle/caches/transforms-3/69aaa32757f7e35402eed7dc9d1295b0/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/a7b75707113d3b7e19ca287b2799e46a/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/79884c7a6aa86cb834447018b80c8408/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/e0e90cf7ae56bd2a34bd2fc749aa38ab/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/efektifpro/.gradle/caches/transforms-3/1e830eb0169d6d545d17d9eea9b4313e/transformed/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.1.0] /Users/efektifpro/.gradle/caches/transforms-3/de275aecccb10b8c99c1b7b4bd1a4578/transformed/customview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core:1.7.0] /Users/efektifpro/.gradle/caches/transforms-3/8fb9359d15ca0544addfd90daeb4c708/transformed/core-1.7.0/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/ff55d0a67c2bd8e598a8c87e093d5a43/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/efektifpro/.gradle/caches/transforms-3/2c6676d8e6ce7578044854d3f6c87027/transformed/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/efektifpro/.gradle/caches/transforms-3/ae33022fca196ee9c26acdebf4d60387/transformed/jetified-savedstate-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/efektifpro/.gradle/caches/transforms-3/37979a3df69b6b7f429cb7cc3d5acb51/transformed/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/1ee906f56ab697d53a905737686c8735/transformed/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/efektifpro/.gradle/caches/transforms-3/bcdfbe4ebc9bf523abb78ba71cbfbd6d/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/efektifpro/.gradle/caches/transforms-3/25cfadab9ead36f44aacb739cc227276/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:17:1-37:12
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/d21a9876b0c769a307ae59a0023bf111/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/03617468eaea8848553d24215ee909b6/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/efektifpro/.gradle/caches/transforms-3/2d713ff7b38a3456d3007f61998265aa/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/efektifpro/.gradle/caches/transforms-3/65e3640f6a492dd512d46d9b660d2023/transformed/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.4.0] /Users/efektifpro/.gradle/caches/transforms-3/f18683f200a91f9b9aca3c74e5bdf534/transformed/lifecycle-runtime-2.4.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/efektifpro/.gradle/caches/transforms-3/aa04640ee9b04b6ba7b69b700c6eba3d/transformed/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/d3536955363da5d8760f7414ef10c4f0/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/d58c602b03b6e4f05cce8a692dd5d234/transformed/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/daa58303c75b8371536aced381c75723/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/9c8a8c806f06e3cca1d5583539801ce6/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/efektifpro/.gradle/caches/transforms-3/099f9f3c85c4802691b00bdb49750ce0/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:17:1-24:12
+INJECTED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:2:1-23:12
+	package
+		ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:3:5-45
+		INJECTED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml
+		ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:2:1-23:12
+		INJECTED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml
+		ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:2:1-23:12
+		INJECTED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:5:5-21:19
+MERGED from [com.google.android.material:material:1.5.0] /Users/efektifpro/.gradle/caches/transforms-3/3e03f7fda4c199ff595d2808a41ed90f/transformed/material-1.5.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.5.0] /Users/efektifpro/.gradle/caches/transforms-3/3e03f7fda4c199ff595d2808a41ed90f/transformed/material-1.5.0/AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] /Users/efektifpro/.gradle/caches/transforms-3/ae1618b33506e2daabcbc3db4df39975/transformed/constraintlayout-2.1.3/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] /Users/efektifpro/.gradle/caches/transforms-3/ae1618b33506e2daabcbc3db4df39975/transformed/constraintlayout-2.1.3/AndroidManifest.xml:9:5-20
+MERGED from [androidx.emoji2:emoji2:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/0cfd2b4014f1699f02c55d8d77c2d794/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:25:5-35:19
+MERGED from [androidx.emoji2:emoji2:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/0cfd2b4014f1699f02c55d8d77c2d794/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:25:5-35:19
+MERGED from [androidx.core:core:1.7.0] /Users/efektifpro/.gradle/caches/transforms-3/8fb9359d15ca0544addfd90daeb4c708/transformed/core-1.7.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.7.0] /Users/efektifpro/.gradle/caches/transforms-3/8fb9359d15ca0544addfd90daeb4c708/transformed/core-1.7.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/efektifpro/.gradle/caches/transforms-3/bcdfbe4ebc9bf523abb78ba71cbfbd6d/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/efektifpro/.gradle/caches/transforms-3/bcdfbe4ebc9bf523abb78ba71cbfbd6d/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/efektifpro/.gradle/caches/transforms-3/25cfadab9ead36f44aacb739cc227276/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:25:5-35:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/efektifpro/.gradle/caches/transforms-3/25cfadab9ead36f44aacb739cc227276/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:25:5-35:19
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/d21a9876b0c769a307ae59a0023bf111/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/d21a9876b0c769a307ae59a0023bf111/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:25:5-31:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.7.0] /Users/efektifpro/.gradle/caches/transforms-3/8fb9359d15ca0544addfd90daeb4c708/transformed/core-1.7.0/AndroidManifest.xml:24:18-86
+	android:supportsRtl
+		ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:11:9-54
+activity#com.kareemdev.myunittestkotlin.MainActivity
+ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:12:9-20:20
+	android:exported
+		ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:14:13-36
+	android:name
+		ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:13:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:15:13-19:29
+action#android.intent.action.MAIN
+ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:16:17-69
+	android:name
+		ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:16:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:18:17-77
+	android:name
+		ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml:18:27-74
+uses-sdk
+INJECTED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml
+INJECTED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml
+MERGED from [androidx.databinding:viewbinding:7.0.2] /Users/efektifpro/.gradle/caches/transforms-3/368bc708c50abe8286eab5bb52218675/transformed/jetified-viewbinding-7.0.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.databinding:viewbinding:7.0.2] /Users/efektifpro/.gradle/caches/transforms-3/368bc708c50abe8286eab5bb52218675/transformed/jetified-viewbinding-7.0.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core-ktx:1.7.0] /Users/efektifpro/.gradle/caches/transforms-3/e7b644434c99ab8595e56305529915ef/transformed/jetified-core-ktx-1.7.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.7.0] /Users/efektifpro/.gradle/caches/transforms-3/e7b644434c99ab8595e56305529915ef/transformed/jetified-core-ktx-1.7.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android.material:material:1.5.0] /Users/efektifpro/.gradle/caches/transforms-3/3e03f7fda4c199ff595d2808a41ed90f/transformed/material-1.5.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.5.0] /Users/efektifpro/.gradle/caches/transforms-3/3e03f7fda4c199ff595d2808a41ed90f/transformed/material-1.5.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] /Users/efektifpro/.gradle/caches/transforms-3/ae1618b33506e2daabcbc3db4df39975/transformed/constraintlayout-2.1.3/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] /Users/efektifpro/.gradle/caches/transforms-3/ae1618b33506e2daabcbc3db4df39975/transformed/constraintlayout-2.1.3/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat:1.4.1] /Users/efektifpro/.gradle/caches/transforms-3/5015ef1db687f3b1aa6571aed1b14464/transformed/appcompat-1.4.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.4.1] /Users/efektifpro/.gradle/caches/transforms-3/5015ef1db687f3b1aa6571aed1b14464/transformed/appcompat-1.4.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/b9d90fd961bf28a7b5c29550224f686c/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/b9d90fd961bf28a7b5c29550224f686c/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.3.6] /Users/efektifpro/.gradle/caches/transforms-3/517139d0109b43e9697a84dfa747aabd/transformed/fragment-1.3.6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.3.6] /Users/efektifpro/.gradle/caches/transforms-3/517139d0109b43e9697a84dfa747aabd/transformed/fragment-1.3.6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.2.4] /Users/efektifpro/.gradle/caches/transforms-3/581498d8846c924e90ef60baeff156b2/transformed/jetified-activity-1.2.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.2.4] /Users/efektifpro/.gradle/caches/transforms-3/581498d8846c924e90ef60baeff156b2/transformed/jetified-activity-1.2.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.4.1] /Users/efektifpro/.gradle/caches/transforms-3/77cec5ac34c829b1ffbec185217df061/transformed/jetified-appcompat-resources-1.4.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.4.1] /Users/efektifpro/.gradle/caches/transforms-3/77cec5ac34c829b1ffbec185217df061/transformed/jetified-appcompat-resources-1.4.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.emoji2:emoji2-views-helper:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/bcda3690264fa513ab9f95a4c48b8c90/transformed/jetified-emoji2-views-helper-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.emoji2:emoji2-views-helper:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/bcda3690264fa513ab9f95a4c48b8c90/transformed/jetified-emoji2-views-helper-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.emoji2:emoji2:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/0cfd2b4014f1699f02c55d8d77c2d794/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.emoji2:emoji2:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/0cfd2b4014f1699f02c55d8d77c2d794/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /Users/efektifpro/.gradle/caches/transforms-3/f3d4079b956b08b7eb3133bc794ba4a5/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /Users/efektifpro/.gradle/caches/transforms-3/f3d4079b956b08b7eb3133bc794ba4a5/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/efektifpro/.gradle/caches/transforms-3/0513277f7d843cd2702d564dcb97793f/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/efektifpro/.gradle/caches/transforms-3/0513277f7d843cd2702d564dcb97793f/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/3b2278dc5b6b8c5a11681946508c9448/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/3b2278dc5b6b8c5a11681946508c9448/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.2.0] /Users/efektifpro/.gradle/caches/transforms-3/8fe8d3536365b6cc3fbcae5e2d9db7af/transformed/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] /Users/efektifpro/.gradle/caches/transforms-3/8fe8d3536365b6cc3fbcae5e2d9db7af/transformed/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/efektifpro/.gradle/caches/transforms-3/464ac139ec5855214215694df9f499eb/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/efektifpro/.gradle/caches/transforms-3/464ac139ec5855214215694df9f499eb/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/efektifpro/.gradle/caches/transforms-3/69aaa32757f7e35402eed7dc9d1295b0/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/efektifpro/.gradle/caches/transforms-3/69aaa32757f7e35402eed7dc9d1295b0/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/a7b75707113d3b7e19ca287b2799e46a/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/a7b75707113d3b7e19ca287b2799e46a/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/79884c7a6aa86cb834447018b80c8408/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/79884c7a6aa86cb834447018b80c8408/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/e0e90cf7ae56bd2a34bd2fc749aa38ab/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/e0e90cf7ae56bd2a34bd2fc749aa38ab/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/efektifpro/.gradle/caches/transforms-3/1e830eb0169d6d545d17d9eea9b4313e/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/efektifpro/.gradle/caches/transforms-3/1e830eb0169d6d545d17d9eea9b4313e/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] /Users/efektifpro/.gradle/caches/transforms-3/de275aecccb10b8c99c1b7b4bd1a4578/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] /Users/efektifpro/.gradle/caches/transforms-3/de275aecccb10b8c99c1b7b4bd1a4578/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.7.0] /Users/efektifpro/.gradle/caches/transforms-3/8fb9359d15ca0544addfd90daeb4c708/transformed/core-1.7.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.7.0] /Users/efektifpro/.gradle/caches/transforms-3/8fb9359d15ca0544addfd90daeb4c708/transformed/core-1.7.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/ff55d0a67c2bd8e598a8c87e093d5a43/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/ff55d0a67c2bd8e598a8c87e093d5a43/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/efektifpro/.gradle/caches/transforms-3/2c6676d8e6ce7578044854d3f6c87027/transformed/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/efektifpro/.gradle/caches/transforms-3/2c6676d8e6ce7578044854d3f6c87027/transformed/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/efektifpro/.gradle/caches/transforms-3/ae33022fca196ee9c26acdebf4d60387/transformed/jetified-savedstate-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/efektifpro/.gradle/caches/transforms-3/ae33022fca196ee9c26acdebf4d60387/transformed/jetified-savedstate-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/efektifpro/.gradle/caches/transforms-3/37979a3df69b6b7f429cb7cc3d5acb51/transformed/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/efektifpro/.gradle/caches/transforms-3/37979a3df69b6b7f429cb7cc3d5acb51/transformed/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/1ee906f56ab697d53a905737686c8735/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/1ee906f56ab697d53a905737686c8735/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/efektifpro/.gradle/caches/transforms-3/bcdfbe4ebc9bf523abb78ba71cbfbd6d/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/efektifpro/.gradle/caches/transforms-3/bcdfbe4ebc9bf523abb78ba71cbfbd6d/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/efektifpro/.gradle/caches/transforms-3/25cfadab9ead36f44aacb739cc227276/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/efektifpro/.gradle/caches/transforms-3/25cfadab9ead36f44aacb739cc227276/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/d21a9876b0c769a307ae59a0023bf111/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/d21a9876b0c769a307ae59a0023bf111/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/03617468eaea8848553d24215ee909b6/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/03617468eaea8848553d24215ee909b6/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/efektifpro/.gradle/caches/transforms-3/2d713ff7b38a3456d3007f61998265aa/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/efektifpro/.gradle/caches/transforms-3/2d713ff7b38a3456d3007f61998265aa/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/efektifpro/.gradle/caches/transforms-3/65e3640f6a492dd512d46d9b660d2023/transformed/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/efektifpro/.gradle/caches/transforms-3/65e3640f6a492dd512d46d9b660d2023/transformed/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.4.0] /Users/efektifpro/.gradle/caches/transforms-3/f18683f200a91f9b9aca3c74e5bdf534/transformed/lifecycle-runtime-2.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.4.0] /Users/efektifpro/.gradle/caches/transforms-3/f18683f200a91f9b9aca3c74e5bdf534/transformed/lifecycle-runtime-2.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/efektifpro/.gradle/caches/transforms-3/aa04640ee9b04b6ba7b69b700c6eba3d/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/efektifpro/.gradle/caches/transforms-3/aa04640ee9b04b6ba7b69b700c6eba3d/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/d3536955363da5d8760f7414ef10c4f0/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/d3536955363da5d8760f7414ef10c4f0/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/d58c602b03b6e4f05cce8a692dd5d234/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/d58c602b03b6e4f05cce8a692dd5d234/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/daa58303c75b8371536aced381c75723/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/daa58303c75b8371536aced381c75723/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/9c8a8c806f06e3cca1d5583539801ce6/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/9c8a8c806f06e3cca1d5583539801ce6/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/efektifpro/.gradle/caches/transforms-3/099f9f3c85c4802691b00bdb49750ce0/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/efektifpro/.gradle/caches/transforms-3/099f9f3c85c4802691b00bdb49750ce0/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
+INJECTED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml
+INJECTED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml
+		ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml
+		ADDED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/efektifpro/development/Fundamental Kotlin/MyUnitTestKotlin/app/src/main/AndroidManifest.xml
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/0cfd2b4014f1699f02c55d8d77c2d794/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/efektifpro/.gradle/caches/transforms-3/25cfadab9ead36f44aacb739cc227276/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:26:9-34:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/efektifpro/.gradle/caches/transforms-3/25cfadab9ead36f44aacb739cc227276/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:26:9-34:20
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/d21a9876b0c769a307ae59a0023bf111/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/d21a9876b0c769a307ae59a0023bf111/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/0cfd2b4014f1699f02c55d8d77c2d794/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:30:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/0cfd2b4014f1699f02c55d8d77c2d794/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:28:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/0cfd2b4014f1699f02c55d8d77c2d794/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:29:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/0cfd2b4014f1699f02c55d8d77c2d794/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:27:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/0cfd2b4014f1699f02c55d8d77c2d794/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/0cfd2b4014f1699f02c55d8d77c2d794/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:33:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/efektifpro/.gradle/caches/transforms-3/0cfd2b4014f1699f02c55d8d77c2d794/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:32:17-75
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/efektifpro/.gradle/caches/transforms-3/25cfadab9ead36f44aacb739cc227276/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/efektifpro/.gradle/caches/transforms-3/25cfadab9ead36f44aacb739cc227276/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/efektifpro/.gradle/caches/transforms-3/25cfadab9ead36f44aacb739cc227276/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78

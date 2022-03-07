@@ -18,6 +18,7 @@ class NoteRepository(application: Application){
     }
 
     fun getAllNotes(): LiveData<List<Note>> = mNotesDao.getAllNotes()
+
     fun insert(note: Note){
         executorService.execute{
             mNotesDao.insert(note)

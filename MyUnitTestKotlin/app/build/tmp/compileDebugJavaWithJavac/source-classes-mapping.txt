@@ -1,0 +1,4 @@
+com/kareemdev/myunittestkotlin/BuildConfig.java
+ com.kareemdev.myunittestkotlin.BuildConfig
+com/kareemdev/myunittestkotlin/databinding/ActivityMainBinding.java
+ com.kareemdev.myunittestkotlin.databinding.ActivityMainBinding
