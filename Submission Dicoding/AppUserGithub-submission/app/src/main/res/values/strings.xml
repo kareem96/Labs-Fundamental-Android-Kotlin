@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">App User Github</string>
+    <string name="full_name">Kareem</string>
+    <string name="username">Kareem96</string>
+    <string name="repository">Repository</string>
+    <string name="follower">Follower</string>
+    <string name="following">Following</string>
+    <string name="search">Search User</string>
+    <string name="change_language_settings">Change Language Settings</string>
+    <string name="count_follower">000</string>
+    <string name="count_following">000</string>
+    <string name="count_repository">000</string>
+    <string name="setting">Setting</string>
+    <string name="title_repo">Repository</string>
+    <string name="title_following">Following</string>
+    <string name="title_follower">Follower</string>
+    <string name="title_url" translatable="false">url</string>
+</resources>

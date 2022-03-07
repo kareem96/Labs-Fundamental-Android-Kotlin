@@ -27,7 +27,6 @@ class NewsRepository private constructor(
 
     private val result = MediatorLiveData<Result<List<NewsEntity>>>()
     fun getHeadlineNews(): LiveData<Result<List<NewsEntity>>> = liveData{
-//        result.value = Result.Loading
         emit(Result.Loading)
         try {
             val response = apiService.getNews(BuildConfig.API_KEY)
