@@ -9,7 +9,6 @@ import com.kareem.appusergithub.data.model.SearchResponse
 import com.kareem.appusergithub.data.model.UserItems
 import com.kareem.appusergithub.data.remote.ApiConfig
 import com.kareem.appusergithub.data.remote.ApiService
-import com.kareem.appusergithub.utils.AppExecutors
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -50,18 +49,26 @@ class Repository (private val application: Application){
         })
         return result
     }
-}
-/*
-{
-    companion object{
-        @Volatile
-        private var instance: Repository? = null
-        fun getInstance(
-            apiService: ApiService,
-            userDao: UserDao,
-            appExecutors: AppExecutors
-        ):Repository = instance ?: synchronized(this){
-            instance ?: Repository(apiService, userDao, appExecutors)
-        }.also { instance = it }
+
+    suspend fun detailUser(username:String): LiveData<Result<UserItems>> {
+        val user = MutableLiveData<Result<UserItems>>()
+        if(userDao.getBookmarkedUser(username) != null){
+            user.postValue(Result.Success(userDao.getBookmarkedUser(username)))
+        }else{
+            apiService.getUser(username).enqueue(object : Callback<UserItems>{
+                override fun onResponse(call: Call<UserItems>, response: Response<UserItems>) {
+                    val result = response.body()
+                    user.postValue(Result.Success(result))
+                }
+
+                override fun onFailure(call: Call<UserItems>, t: Throwable) {
+
+                }
+            })
+        }
+        return user
     }
-}*/
+
+    suspend fun insertBookmarkedUser(user: UserItems) = userDao.insertUser(user)
+    suspend fun deleteBookmarkedUser(user: UserItems) = userDao.deleteAll(user)
+}

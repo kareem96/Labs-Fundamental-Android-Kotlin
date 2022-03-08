@@ -1,20 +1,24 @@
-package com.kareem.appusergithub.view
+package com.kareem.appusergithub.presentation.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import com.bumptech.glide.Glide
-import com.kareem.appusergithub.adapter.SectionPagerAdapter
+import com.bumptech.glide.request.RequestOptions
+import com.kareem.appusergithub.data.Result
+import com.kareem.appusergithub.presentation.adapter.SectionPagerAdapter
 import com.kareem.appusergithub.databinding.ActivityDetailBinding
 import com.kareem.appusergithub.data.model.UserItems
-import com.kareem.appusergithub.viewModel.MainDetailViewModel
+import com.kareem.appusergithub.presentation.viewModel.MainDetailViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class DetailActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityDetailBinding
 
-    private lateinit var mainDetailViewModel: MainDetailViewModel
-    private var githubUser = UserItems() as UserItems?
+    private lateinit var binding: ActivityDetailBinding
+    private val mainDetailViewModel by viewModels<MainDetailViewModel>()
+//    private var githubUser = UserItems() as UserItems?
 
     companion object{
         const val EXTRA_GITHUB_USER = "extra_github_user"
@@ -25,7 +29,45 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            elevation = 0F
+        }
+
+        CoroutineScope(Dispatchers.Main).launch {
+            mainDetailViewModel.getUser(EXTRA_GITHUB_USER.toString()).observe(this@DetailActivity){
+                when(it){
+                    is Result.Error -> onFailed(it.message)
+                    is Result.Loading -> onLoading()
+                    is Result.Success -> onSuccess(it.data)
+                }
+            }
+        }
+
         /*showDetailsGithubUser()*/
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return super.onSupportNavigateUp()
+    }
+    private fun onSuccess(data: UserItems?) {
+        binding.apply {
+            name.text = data?.repository.toString()
+
+            Glide.with(this@DetailActivity)
+                .load(data?.avatar)
+                .apply(RequestOptions.circleCropTransform())
+                .into(imageDetail)
+        }
+    }
+
+    private fun onLoading() {
+
+    }
+
+    private fun onFailed(message: String?) {
+
     }
 
     /*private fun showDetailsGithubUser() {

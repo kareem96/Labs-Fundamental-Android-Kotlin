@@ -1,35 +1,50 @@
 package com.kareem.appusergithub.data.model
 
-import android.os.Parcelable
-import androidx.room.Entity
-import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
+
+@Entity(tableName = "user")
 data class UserItems (
     @field:SerializedName("id")
-    var id: Int = 0,
+    @field:ColumnInfo(name="id")
+    @field:PrimaryKey
+    val id: Int = 0,
 
     @field:SerializedName("login")
-    var username: String = "",
+    @field:ColumnInfo(name="username")
+    val username: String = "",
 
     @field:SerializedName("name")
-    var name: String = "",
+    @field:ColumnInfo(name="name")
+    val name: String = "",
 
     @field:SerializedName("avatar_url")
-    var avatar: String? = "",
+    @field:ColumnInfo(name="avatar_url")
+    val avatar: String? = "",
 
     @field:SerializedName("company")
-    var company: String? = null,
+    @field:ColumnInfo(name="company")
+    val company: String? = null,
 
     @field:SerializedName("location")
-    var location: String? = null,
+    @field:ColumnInfo(name="location")
+    val location: String? = null,
 
     @field:SerializedName("followers")
-    var followers: Int? = 0,
+    @field:ColumnInfo(name="followers")
+    val followers: Int? = 0,
 
     @field:SerializedName("following")
-    var following: Int? = 0,
+    @field:ColumnInfo(name="following")
+    val following: Int? = 0,
 
     @field:SerializedName("public_repos")
-    var repository: Int? = 0,
+    @field:ColumnInfo(name="public_repos")
+    val repository: Int? = 0,
+
+    @field:ColumnInfo(name="bookmarked")
+    var isBookmarked: Boolean,
 )

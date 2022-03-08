@@ -1,27 +1,19 @@
-package com.kareem.appusergithub.viewModel
+package com.kareem.appusergithub.presentation.viewModel
 
-import android.content.Context
-import android.util.Log
-import android.widget.Toast
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kareem.appusergithub.data.model.UserItems
-import com.loopj.android.http.AsyncHttpClient
-import com.loopj.android.http.AsyncHttpResponseHandler
-import cz.msebera.android.httpclient.Header
-import org.json.JSONArray
 
-class FollowerViewModel : ViewModel() {
+class FollowingViewModel : ViewModel(){
     val listGithubUser = MutableLiveData<ArrayList<UserItems>>()
 
     /*fun setGithubUsers(context: Context, username: String){
         val listItems = ArrayList<UserItems>()
 
-        val url = "https://api.github.com/users/$username/followers"
-        val client = AsyncHttpClient()
+        val url = "https://api.github.com/users/$username/following"
+        val client= AsyncHttpClient()
         client.addHeader("Authorization", "token 7ee940a64fa696c7d1815a59daa053b2e2a5bea6")
-        client.addHeader("User-Agent","request")
+        client.addHeader("User-Agent", "request")
 
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(
@@ -36,12 +28,12 @@ class FollowerViewModel : ViewModel() {
                     val list = JSONArray(result)
                     for (i in 0 until list.length()) {
                         val githubUser = list.getJSONObject(i)
-                        val githubUserItem = UserItems()
-                        githubUserItem.id = githubUser.getInt("id")
-                        githubUserItem.avatar = githubUser.getString("avatar_url")
-                        githubUserItem.username = githubUser.getString("login")
-                        githubUserItem.url = githubUser.getString("html_url")
-                        listItems.add(githubUserItem)
+                        val githubUserItems = UserItems()
+                        githubUserItems.id = githubUser.getInt("id")
+                        githubUserItems.avatar = githubUser.getString("avatar_url")
+                        githubUserItems.username = githubUser.getString("login")
+                        githubUserItems.url = githubUser.getString("html_url")
+                        listItems.add(githubUserItems)
                     }
                     listGithubUser.postValue(listItems)
                 } catch (e: Exception) {
@@ -58,7 +50,7 @@ class FollowerViewModel : ViewModel() {
                 val errorMessage = when (statusCode){
                     401 -> "$statusCode : Bad Request"
                     403 -> "$statusCode : Forbidden"
-                    404 -> "$statusCode : Not found"
+                    404 -> "$statusCode : Not Found"
                     else -> "$statusCode : ${error?.message}"
                 }
                 Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()

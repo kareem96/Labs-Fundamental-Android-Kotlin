@@ -1,12 +1,12 @@
-package com.kareem.appusergithub.adapter
+package com.kareem.appusergithub.presentation.adapter
 
 import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.kareem.appusergithub.R
-import com.kareem.appusergithub.view.FollowersFragment
-import com.kareem.appusergithub.view.FollowingFragment
+import com.kareem.appusergithub.presentation.view.FollowersFragment
+import com.kareem.appusergithub.presentation.view.FollowingFragment
 
 class SectionPagerAdapter(private val mContext: Context, fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     var username: String? = null

@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.kareem.appusergithub.data.local.entity.UserEntity
+import com.kareem.appusergithub.data.model.UserItems
 
 
-@Database(entities = [UserEntity::class], version = 1, exportSchema = false)
+@Database(entities = [UserItems::class], version = 1, exportSchema = false)
 abstract class UserDatabase : RoomDatabase(){
     abstract fun userDao(): UserDao
     companion object{

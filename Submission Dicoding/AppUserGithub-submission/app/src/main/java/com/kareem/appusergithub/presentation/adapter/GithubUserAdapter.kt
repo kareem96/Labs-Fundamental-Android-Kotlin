@@ -1,19 +1,15 @@
-package com.kareem.appusergithub.adapter
+package com.kareem.appusergithub.presentation.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.kareem.appusergithub.R
 import com.kareem.appusergithub.data.model.UserItems
 import com.kareem.appusergithub.databinding.UserItemBinding
-import com.kareem.appusergithub.view.DetailActivity
-import com.kareem.appusergithub.view.DetailActivity.Companion.EXTRA_GITHUB_USER
+import com.kareem.appusergithub.presentation.view.DetailActivity
+import com.kareem.appusergithub.presentation.view.DetailActivity.Companion.EXTRA_GITHUB_USER
 
 class GithubUserAdapter: RecyclerView.Adapter<GithubUserAdapter.GithubUserViewHolder>() {
     private val listGithubUser = ArrayList<UserItems>()
