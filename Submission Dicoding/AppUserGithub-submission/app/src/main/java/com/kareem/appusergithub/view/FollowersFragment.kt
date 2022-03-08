@@ -46,10 +46,10 @@ class FollowersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val username = arguments?.getString(ARG_USERNAME) as String
-        showRecyclerGithubUser(username)
+        /*showRecyclerGithubUser(username)*/
     }
 
-    private fun showRecyclerGithubUser(username: String) {
+    /*private fun showRecyclerGithubUser(username: String) {
         adapter = GithubUserAdapter()
         adapter.notifyDataSetChanged()
         binding.rvUser.layoutManager = LinearLayoutManager(activity)
@@ -67,7 +67,7 @@ class FollowersFragment : Fragment() {
                 showLoading(true)
             }
         })
-    }
+    }*/
 
     private fun showLoading(state: Boolean) {
         binding.progressBarFollower.visibility = if (state) View.VISIBLE else View.GONE

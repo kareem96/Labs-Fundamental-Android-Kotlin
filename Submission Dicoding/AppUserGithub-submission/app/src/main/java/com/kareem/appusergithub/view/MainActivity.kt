@@ -6,20 +6,23 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kareem.appusergithub.R
-import com.kareem.appusergithub.SettingsActivity
+import com.kareem.appusergithub.utils.SettingsActivity
 import com.kareem.appusergithub.adapter.GithubUserAdapter
-import com.kareem.appusergithub.databinding.ActivityDetailBinding
+import com.kareem.appusergithub.data.Result
+import com.kareem.appusergithub.data.model.UserItems
 import com.kareem.appusergithub.databinding.ActivityMainBinding
+import com.kareem.appusergithub.utils.ViewStateCallback
 import com.kareem.appusergithub.viewModel.MainViewModel
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var adapter: GithubUserAdapter
-    private lateinit var mainViewModel: MainViewModel
+class MainActivity : AppCompatActivity(), ViewStateCallback<List<UserItems>> {
 
+    private lateinit var uQuery:String
+    private lateinit var adapter: GithubUserAdapter
+    private val mainViewModel by viewModels<MainViewModel>()
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +36,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun showRecyclerGithubUser() {
         adapter = GithubUserAdapter()
-        adapter.notifyDataSetChanged()
+        binding.mainSearch.rvListSearch.apply {
+            adapter = adapter
+            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
+        }
+        /*adapter.notifyDataSetChanged()
         binding.rvListUser.layoutManager = LinearLayoutManager(this)
         binding.rvListUser.adapter = adapter
 
@@ -49,11 +56,33 @@ class MainActivity : AppCompatActivity() {
                 adapter.setData(arrayListOf())
                 showLoading(true)
             }
-        })
+        })*/
     }
 
     private fun searchGithubUser() {
-        binding.search.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener{
+        binding.searchView.apply {
+            queryHint = ""
+            setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    uQuery = query.toString()
+                    clearFocus()
+                    mainViewModel.searchUser(uQuery).observe(this@MainActivity, {
+                        when(it){
+                            is Result.Error -> onFailed(it.message)
+                            is Result.Loading -> onLoading()
+                            is Result.Success -> it.data?.let { i -> onSuccess(i) }
+                        }
+                    })
+                    return true
+                }
+
+                override fun onQueryTextChange(p0: String?): Boolean {
+                    return false
+                }
+
+            })
+        }
+        /*binding.search.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String): Boolean {
                 mainViewModel.searchGithubUsers(applicationContext, query)
 
@@ -64,11 +93,52 @@ class MainActivity : AppCompatActivity() {
                 return false
             }
 
-        })
+        })*/
     }
 
-    private fun showLoading(state: Boolean) {
-        binding.progressBar.visibility = if (state) View.VISIBLE else View.GONE
+    override fun onSuccess(data: List<UserItems>) {
+        adapter.setData(data as ArrayList<UserItems>)
+        binding.mainSearch.apply {
+            ivSearch.visibility = visible
+            tvMessage.visibility = visible
+            progressSearch.visibility = visible
+            rvListSearch.visibility = visible
+        }
+    }
+
+    override fun onLoading() {
+        binding.mainSearch.apply {
+            ivSearch.visibility = invisible
+            tvMessage.visibility = invisible
+            progressSearch.visibility = invisible
+            rvListSearch.visibility = invisible
+        }
+    }
+
+    override fun onFailed(message: String?) {
+        binding.mainSearch.apply {
+            if(message == null){
+                ivSearch.apply {
+                    setImageResource(R.drawable.ic_search)
+                    visibility = visible
+                }
+                tvMessage.apply {
+                    text = ""
+                    visibility = visible
+                }
+            }else{
+                ivSearch.apply {
+                    setImageResource(R.drawable.ic_search_off)
+                    visibility = visible
+                }
+                tvMessage.apply {
+                    text = message
+                    visibility = visible
+                }
+            }
+            progressSearch.visibility = visible
+            rvListSearch.visibility = visible
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

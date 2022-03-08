@@ -5,10 +5,9 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.kareem.appusergithub.R
 import com.kareem.appusergithub.adapter.SectionPagerAdapter
 import com.kareem.appusergithub.databinding.ActivityDetailBinding
-import com.kareem.appusergithub.model.UserItems
+import com.kareem.appusergithub.data.model.UserItems
 import com.kareem.appusergithub.viewModel.MainDetailViewModel
 
 class DetailActivity : AppCompatActivity() {
@@ -26,10 +25,10 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        showDetailsGithubUser()
+        /*showDetailsGithubUser()*/
     }
 
-    private fun showDetailsGithubUser() {
+    /*private fun showDetailsGithubUser() {
         val extraGithubUser = intent.getParcelableExtra(EXTRA_GITHUB_USER) as UserItems
 
         val actionbar = supportActionBar
@@ -52,7 +51,7 @@ class DetailActivity : AppCompatActivity() {
             binding.loc.text = githubUserItems.location
         })
         showSectionPagerAdapter(getUsername)
-    }
+    }*/
 
     private fun showSectionPagerAdapter(username: String) {
         val sectionPagerAdapter = SectionPagerAdapter(this, supportFragmentManager)

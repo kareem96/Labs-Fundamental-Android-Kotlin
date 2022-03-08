@@ -6,17 +6,16 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.kareem.appusergithub.model.UserItems
+import com.kareem.appusergithub.data.model.UserItems
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
-import org.json.JSONArray
 import org.json.JSONObject
 
 class MainDetailViewModel : ViewModel() {
     val listGithubUser = MutableLiveData<UserItems>()
 
-    fun setGithubUsers(context: Context, username: String){
+    /*fun setGithubUsers(context: Context, username: String){
         val url = "https://api.github.com/users/$username"
         val client = AsyncHttpClient()
         client.addHeader("Authorization", "token 7ee940a64fa696c7d1815a59daa053b2e2a5bea6")
@@ -63,5 +62,5 @@ class MainDetailViewModel : ViewModel() {
     }
     fun getGithubUsers() : LiveData<UserItems>{
         return listGithubUser
-    }
+    }*/
 }

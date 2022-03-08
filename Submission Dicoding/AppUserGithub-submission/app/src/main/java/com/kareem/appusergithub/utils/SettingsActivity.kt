@@ -1,10 +1,11 @@
-package com.kareem.appusergithub
+package com.kareem.appusergithub.utils
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
+import com.kareem.appusergithub.R
 import com.kareem.appusergithub.databinding.ActivitySettingsBinding
 
 class SettingsActivity : AppCompatActivity() {

@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.kareem.appusergithub.model.UserItems
+import com.kareem.appusergithub.data.model.UserItems
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
@@ -15,7 +15,7 @@ import org.json.JSONArray
 class FollowerViewModel : ViewModel() {
     val listGithubUser = MutableLiveData<ArrayList<UserItems>>()
 
-    fun setGithubUsers(context: Context, username: String){
+    /*fun setGithubUsers(context: Context, username: String){
         val listItems = ArrayList<UserItems>()
 
         val url = "https://api.github.com/users/$username/followers"
@@ -67,5 +67,5 @@ class FollowerViewModel : ViewModel() {
     }
     fun getGithubUsers() : LiveData<ArrayList<UserItems>>{
         return listGithubUser
-    }
+    }*/
 }
