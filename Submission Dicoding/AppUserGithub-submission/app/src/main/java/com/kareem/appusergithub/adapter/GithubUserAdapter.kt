@@ -18,7 +18,7 @@ import com.kareem.appusergithub.view.DetailActivity.Companion.EXTRA_GITHUB_USER
 class GithubUserAdapter: RecyclerView.Adapter<GithubUserAdapter.GithubUserViewHolder>() {
     private val listGithubUser = ArrayList<UserItems>()
 
-    fun setData(items: ArrayList<UserItems>){
+    fun setData(items: List<UserItems>){
         listGithubUser.apply {
             clear()
             addAll(items)
@@ -28,7 +28,7 @@ class GithubUserAdapter: RecyclerView.Adapter<GithubUserAdapter.GithubUserViewHo
         notifyDataSetChanged()*/
         notifyDataSetChanged()
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubUserAdapter.GithubUserViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubUserViewHolder {
         val view = UserItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return GithubUserViewHolder(view)
     }

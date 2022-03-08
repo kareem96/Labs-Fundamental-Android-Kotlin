@@ -8,8 +8,8 @@ interface ViewStateCallback<T> {
     fun onFailed(message: String?)
 
     val invisible:Int
-    get() = View.INVISIBLE
+        get() = View.INVISIBLE
 
     val visible:Int
-    get() = View.INVISIBLE
+        get() = View.VISIBLE
 }

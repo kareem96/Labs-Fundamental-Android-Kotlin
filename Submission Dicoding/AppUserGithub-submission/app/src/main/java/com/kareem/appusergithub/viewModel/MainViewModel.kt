@@ -17,6 +17,8 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.lang.Exception
 
-class MainViewModel(private val repository: Repository) : ViewModel() {
+class MainViewModel(application: Application) : AndroidViewModel(application) {
+//    fun searchUser(query:String) = repository.getSearch(query)
+    private val repository = Repository(application)
     fun searchUser(query:String) = repository.getSearch(query)
 }

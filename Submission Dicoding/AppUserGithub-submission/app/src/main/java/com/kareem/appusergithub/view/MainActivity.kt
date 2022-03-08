@@ -1,5 +1,6 @@
 package com.kareem.appusergithub.view
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,47 +20,23 @@ import com.kareem.appusergithub.utils.ViewStateCallback
 import com.kareem.appusergithub.viewModel.MainViewModel
 
 class MainActivity : AppCompatActivity(), ViewStateCallback<List<UserItems>> {
-
     private lateinit var uQuery:String
     private lateinit var adapter: GithubUserAdapter
-    private val mainViewModel by viewModels<MainViewModel>()
     private lateinit var binding: ActivityMainBinding
+    private val mainViewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        showRecyclerGithubUser()
-        searchGithubUser()
-    }
-
-    private fun showRecyclerGithubUser() {
+//        showRecyclerGithubUser()
         adapter = GithubUserAdapter()
         binding.mainSearch.rvListSearch.apply {
             adapter = adapter
             layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
         }
-        /*adapter.notifyDataSetChanged()
-        binding.rvListUser.layoutManager = LinearLayoutManager(this)
-        binding.rvListUser.adapter = adapter
-
-        mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
-        mainViewModel.setGithubUser(applicationContext)
-
-        mainViewModel.getGithubUsers().observe(this, Observer { githubUserItems ->
-            if (githubUserItems !== null){
-                adapter.setData(githubUserItems)
-
-                showLoading(false)
-            }else{
-                adapter.setData(arrayListOf())
-                showLoading(true)
-            }
-        })*/
-    }
-
-    private fun searchGithubUser() {
+//        searchGithubUser()
         binding.searchView.apply {
             queryHint = ""
             setOnQueryTextListener(object : SearchView.OnQueryTextListener{
@@ -82,6 +59,57 @@ class MainActivity : AppCompatActivity(), ViewStateCallback<List<UserItems>> {
 
             })
         }
+    }
+
+    private fun showRecyclerGithubUser() {
+        /*adapter = GithubUserAdapter()
+        binding.mainSearch.rvListSearch.apply {
+            adapter = adapter
+            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
+        }*/
+
+        /*adapter.notifyDataSetChanged()
+        binding.rvListUser.layoutManager = LinearLayoutManager(this)
+        binding.rvListUser.adapter = adapter
+
+        mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
+        mainViewModel.setGithubUser(applicationContext)
+
+        mainViewModel.getGithubUsers().observe(this, Observer { githubUserItems ->
+            if (githubUserItems !== null){
+                adapter.setData(githubUserItems)
+
+                showLoading(false)
+            }else{
+                adapter.setData(arrayListOf())
+                showLoading(true)
+            }
+        })*/
+    }
+
+    private fun searchGithubUser() {
+        /*binding.searchView.apply {
+            queryHint = ""
+            setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    uQuery = query.toString()
+                    clearFocus()
+                    mainViewModel.searchUser(uQuery).observe(this@MainActivity, {
+                        when(it){
+                            is Result.Error -> onFailed(it.message)
+                            is Result.Loading -> onLoading()
+                            is Result.Success -> it.data?.let { i -> onSuccess(i) }
+                        }
+                    })
+                    return true
+                }
+
+                override fun onQueryTextChange(p0: String?): Boolean {
+                    return false
+                }
+
+            })
+        }*/
         /*binding.search.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String): Boolean {
                 mainViewModel.searchGithubUsers(applicationContext, query)
@@ -97,11 +125,11 @@ class MainActivity : AppCompatActivity(), ViewStateCallback<List<UserItems>> {
     }
 
     override fun onSuccess(data: List<UserItems>) {
-        adapter.setData(data as ArrayList<UserItems>)
+        adapter.setData(data)
         binding.mainSearch.apply {
-            ivSearch.visibility = visible
-            tvMessage.visibility = visible
-            progressSearch.visibility = visible
+            ivSearch.visibility = invisible
+            tvMessage.visibility = invisible
+            progressSearch.visibility = invisible
             rvListSearch.visibility = visible
         }
     }
@@ -110,7 +138,7 @@ class MainActivity : AppCompatActivity(), ViewStateCallback<List<UserItems>> {
         binding.mainSearch.apply {
             ivSearch.visibility = invisible
             tvMessage.visibility = invisible
-            progressSearch.visibility = invisible
+            progressSearch.visibility = visible
             rvListSearch.visibility = invisible
         }
     }
@@ -136,8 +164,8 @@ class MainActivity : AppCompatActivity(), ViewStateCallback<List<UserItems>> {
                     visibility = visible
                 }
             }
-            progressSearch.visibility = visible
-            rvListSearch.visibility = visible
+            progressSearch.visibility = invisible
+            rvListSearch.visibility = invisible
         }
     }
 

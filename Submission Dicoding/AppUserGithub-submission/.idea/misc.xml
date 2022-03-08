@@ -9,7 +9,7 @@
         <entry key="app/src/main/res/layout/fragment_followers.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_following.xml" value="0.1" />
         <entry key="app/src/main/res/layout/page_search.xml" value="0.14" />
-        <entry key="app/src/main/res/layout/user_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/user_item.xml" value="0.16" />
       </map>
     </option>
   </component>
