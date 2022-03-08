@@ -16,7 +16,7 @@ data class UserItems (
     var name: String = "",
 
     @field:SerializedName("avatar_url")
-    var avatar: String = "",
+    var avatar: String? = "",
 
     @field:SerializedName("company")
     var company: String? = null,

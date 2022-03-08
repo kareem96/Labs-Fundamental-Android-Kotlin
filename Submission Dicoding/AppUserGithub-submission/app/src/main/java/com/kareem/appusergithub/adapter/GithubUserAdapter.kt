@@ -34,13 +34,11 @@ class GithubUserAdapter: RecyclerView.Adapter<GithubUserAdapter.GithubUserViewHo
     }
 
     override fun onBindViewHolder(holder: GithubUserAdapter.GithubUserViewHolder, position: Int) {
-//        val githubUser = listGithubUser[position]
         holder.bind(listGithubUser[position])
     }
 
-    override fun getItemCount(): Int {
-        return listGithubUser.size
-    }
+    override fun getItemCount(): Int = listGithubUser.size
+
 
     inner class GithubUserViewHolder(private val view: UserItemBinding) : RecyclerView.ViewHolder(view.root) {
         fun  bind(user: UserItems){

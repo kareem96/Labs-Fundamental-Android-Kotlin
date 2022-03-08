@@ -31,13 +31,18 @@ class Repository (private val application: Application){
         result.postValue(Result.Loading())
         apiService.searchUser(query).enqueue(object : Callback<SearchResponse>{
             override fun onResponse(call: Call<SearchResponse>, response: Response<SearchResponse>) {
-                if (response.isSuccessful){
+                val list = response.body()?.items
+                if(list.isNullOrEmpty())
+                    result.postValue(Result.Error(null))
+                else
+                    result.postValue(Result.Success(list))
+               /* if (response.isSuccessful){
                     val list = response.body()?.items
                     if(list.isNullOrEmpty())
                         result.postValue(Result.Error(null))
                     else
                         result.postValue(Result.Success(list))
-                }
+                }*/
             }
             override fun onFailure(call: Call<SearchResponse>, t: Throwable) {
                 result.postValue(Result.Error(t.message))

@@ -31,7 +31,6 @@
             android:text="@string/full_name"
             android:textColor="@color/black"
             android:textSize="20sp"
-
             app:layout_constraintStart_toEndOf="@+id/item_image"
             app:layout_constraintTop_toTopOf="parent" />
 
