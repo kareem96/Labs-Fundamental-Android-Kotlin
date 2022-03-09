@@ -1,55 +1,43 @@
 package com.kareem.appusergithub.presentation.adapter
 
-import android.annotation.SuppressLint
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.kareem.appusergithub.data.model.UserItems
+import com.kareem.appusergithub.data.local.room.UserItems
 import com.kareem.appusergithub.databinding.UserItemBinding
-import com.kareem.appusergithub.presentation.view.DetailActivity
-import com.kareem.appusergithub.presentation.view.DetailActivity.Companion.EXTRA_GITHUB_USER
 
-class GithubUserAdapter: RecyclerView.Adapter<GithubUserAdapter.GithubUserViewHolder>() {
-    private val listGithubUser = ArrayList<UserItems>()
+class GithubUserAdapter(private val listUser: ArrayList<UserItems>): RecyclerView.Adapter<GithubUserAdapter.GithubUserViewHolder>() {
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun setData(items: List<UserItems>){
-        listGithubUser.apply {
-            clear()
-            addAll(items)
-        }
-        notifyDataSetChanged()
-    }
+
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubUserViewHolder {
         val view = UserItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return GithubUserViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: GithubUserAdapter.GithubUserViewHolder, position: Int) {
-        holder.bind(listGithubUser[position])
-    }
-
-    override fun getItemCount(): Int = listGithubUser.size
-
-
-    inner class GithubUserViewHolder(private val view: UserItemBinding) : RecyclerView.ViewHolder(view.root) {
-        fun  bind(user: UserItems){
-            view.apply {
-                itemName.text = user.username
-            }
-            Glide.with(itemView.context)
-                .load(user.avatar)
-                .apply(RequestOptions.circleCropTransform())
-                .into(view.itemImage)
-
-            itemView.setOnClickListener{
-                val moveDetailActivity = Intent(itemView.context, DetailActivity::class.java)
-                moveDetailActivity.putExtra(EXTRA_GITHUB_USER, user.username)
-                itemView.context.startActivity(moveDetailActivity)
-            }
+        val user = listUser[position]
+        Glide.with(holder.itemView.context)
+            .load(user.avatarUrl)
+            .apply(RequestOptions.circleCropTransform())
+            .into(holder.view.itemImage)
+        holder.view.itemName.text = user.login
+        holder.itemView.setOnClickListener{
+            onItemClickCallback.onItemClicked(listUser[holder.adapterPosition])
         }
     }
+
+    override fun getItemCount(): Int = listUser.size
+    inner class GithubUserViewHolder(var view: UserItemBinding) : RecyclerView.ViewHolder(view.root)
+
+    interface OnItemClickCallback{
+        fun onItemClicked(data: UserItems)
+    }
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
+        this.onItemClickCallback = onItemClickCallback
+    }
+
 }

@@ -1,11 +1,17 @@
 package com.kareem.appusergithub.presentation.viewModel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import com.kareem.appusergithub.data.Repository
 
-class MainViewModel(application: Application) : AndroidViewModel(application) {
-//    fun searchUser(query:String) = repository.getSearch(query)
-    private val repository = Repository(application)
-    fun searchUser(query:String) = repository.getSearch(query)
+import androidx.lifecycle.ViewModel
+import com.kareem.appusergithub.presentation.repository.Repository
+
+class MainViewModel(private val repository: Repository) : ViewModel() {
+
+    val isLoading = repository.isLoading
+    val searchUser = repository.searchUser
+    val detailUser = repository.detailUser
+
+    fun getUser(username:String) = repository.getSearch(username)
+
+    fun getDetailUser(username:String) = repository.getDetailUser(username)
+
 }

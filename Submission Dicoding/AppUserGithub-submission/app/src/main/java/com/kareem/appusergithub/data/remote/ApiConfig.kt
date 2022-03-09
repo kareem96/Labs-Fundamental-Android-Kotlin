@@ -1,5 +1,6 @@
 package com.kareem.appusergithub.data.remote
 
+import com.kareem.appusergithub.BuildConfig
 import com.kareem.appusergithub.utils.Constant.API_KEY
 import com.kareem.appusergithub.utils.Constant.BASE_URL
 import okhttp3.OkHttpClient
@@ -10,10 +11,13 @@ import java.util.concurrent.TimeUnit
 
 object ApiConfig {
     fun getApiService(): ApiService{
-        val loggingInterceptor = HttpLoggingInterceptor()
-            .setLevel(HttpLoggingInterceptor.Level.BODY)
+        val loggingInterceptor = if(BuildConfig.DEBUG){
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        }else{
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
+        }
 
-        val client: OkHttpClient = OkHttpClient.Builder()
+        /*val client: OkHttpClient = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .addInterceptor {
                 val original = it.request()
@@ -24,6 +28,10 @@ object ApiConfig {
             }
             .connectTimeout(20, TimeUnit.SECONDS)
             .readTimeout(20, TimeUnit.SECONDS)
+            .build()*/
+
+        val client = OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor)
             .build()
 
         val retrofit = Retrofit.Builder()

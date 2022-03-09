@@ -19,7 +19,7 @@
             android:exported="false" />
         <activity
             android:name=".presentation.view.DetailActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".presentation.view.MainActivity"
             android:exported="true">

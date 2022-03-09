@@ -4,28 +4,23 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.kareem.appusergithub.data.model.UserItems
+import com.kareem.appusergithub.data.local.entity.UserEntity
 
 
-@Database(entities = [UserItems::class],  exportSchema = false, version = 1,)
+@Database(entities = [UserEntity::class],  exportSchema = false, version = 1,)
 abstract class UserDatabase : RoomDatabase(){
     abstract fun userDao(): UserDao
     companion object{
         @Volatile
         private var instance: UserDatabase? = null
 
-        @JvmStatic
-        fun getInstance(context: Context): UserDatabase {
-            if (instance == null){
-                synchronized(UserDatabase::class.java){
-                    instance = Room.databaseBuilder(
-                        context.applicationContext,
-                        UserDatabase::class.java,
-                        "User.db"
-                    ).build()
-                }
+        fun getInstance(context: Context): UserDatabase =
+            instance ?: synchronized(this){
+                instance ?:  Room.databaseBuilder(
+                    context.applicationContext,
+                    UserDatabase::class.java,
+                    "User.db"
+                ).build()
             }
-            return instance as UserDatabase
-        }
     }
 }

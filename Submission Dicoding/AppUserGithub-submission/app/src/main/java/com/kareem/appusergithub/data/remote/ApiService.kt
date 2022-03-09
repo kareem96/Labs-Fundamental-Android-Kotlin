@@ -1,7 +1,7 @@
 package com.kareem.appusergithub.data.remote
 
+import com.kareem.appusergithub.data.local.room.UserItems
 import com.kareem.appusergithub.data.model.SearchResponse
-import com.kareem.appusergithub.data.model.UserItems
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -9,7 +9,7 @@ import retrofit2.http.Query
 
 interface ApiService {
     @GET("users/{username}")
-    fun getUser(
+    fun getDetailUser(
         @Path("username")
         username: String
     ): Call<UserItems>
