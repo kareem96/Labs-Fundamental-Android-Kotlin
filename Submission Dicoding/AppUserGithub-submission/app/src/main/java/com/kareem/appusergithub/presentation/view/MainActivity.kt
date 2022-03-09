@@ -8,6 +8,7 @@ import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.kareem.appusergithub.BookmarkActivity
 import com.kareem.appusergithub.R
 import com.kareem.appusergithub.utils.SettingsActivity
 import com.kareem.appusergithub.presentation.adapter.GithubUserAdapter
@@ -38,24 +39,6 @@ class MainActivity : AppCompatActivity(), ViewStateCallback<List<UserItems>> {
             adapter = uAdapter
             layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
         }
-
-        /*adapter.notifyDataSetChanged()
-        binding.rvListUser.layoutManager = LinearLayoutManager(this)
-        binding.rvListUser.adapter = adapter
-
-        mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
-        mainViewModel.setGithubUser(applicationContext)
-
-        mainViewModel.getGithubUsers().observe(this, Observer { githubUserItems ->
-            if (githubUserItems !== null){
-                adapter.setData(githubUserItems)
-
-                showLoading(false)
-            }else{
-                adapter.setData(arrayListOf())
-                showLoading(true)
-            }
-        })*/
     }
 
     private fun searchGithubUser() {
@@ -140,6 +123,12 @@ class MainActivity : AppCompatActivity(), ViewStateCallback<List<UserItems>> {
         when(selectedMode){
             R.id.action_setting -> {
                 startActivity(Intent(this, SettingsActivity::class.java))
+            }
+            R.id.action_mode -> {
+                startActivity(Intent(this, SettingsActivity::class.java))
+            }
+            R.id.action_bookmark -> {
+                startActivity(Intent(this, BookmarkActivity::class.java))
             }
         }
     }

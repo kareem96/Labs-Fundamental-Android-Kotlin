@@ -1,5 +1,6 @@
 package com.kareem.appusergithub.presentation.adapter
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,14 +15,12 @@ import com.kareem.appusergithub.presentation.view.DetailActivity.Companion.EXTRA
 class GithubUserAdapter: RecyclerView.Adapter<GithubUserAdapter.GithubUserViewHolder>() {
     private val listGithubUser = ArrayList<UserItems>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(items: List<UserItems>){
         listGithubUser.apply {
             clear()
             addAll(items)
         }
-        /*listGithubUser.clear()
-        listGithubUser.addAll(items)
-        notifyDataSetChanged()*/
         notifyDataSetChanged()
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubUserViewHolder {

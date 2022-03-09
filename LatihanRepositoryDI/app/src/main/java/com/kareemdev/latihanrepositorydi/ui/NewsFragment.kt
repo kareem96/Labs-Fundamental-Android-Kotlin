@@ -79,9 +79,7 @@ class NewsFragment : Fragment() {
                 binding?.progressBar?.visibility = View.GONE
                 newsAdapter.submitList(bookmarkedNews)
             }
-
         }
-
 
 
         binding?.rvNews?.apply {

@@ -1,63 +1,15 @@
 package com.kareem.appusergithub.presentation.viewModel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.kareem.appusergithub.data.Repository
 import com.kareem.appusergithub.data.model.UserItems
 
-class FollowerViewModel : ViewModel() {
-    val listGithubUser = MutableLiveData<ArrayList<UserItems>>()
+class FollowerViewModel(application: Application) : AndroidViewModel(application) {
+    private val repository = Repository(application)
 
-    /*fun setGithubUsers(context: Context, username: String){
-        val listItems = ArrayList<UserItems>()
+    fun getFollowers(username:String) = repository.getFollowers(username)
 
-        val url = "https://api.github.com/users/$username/followers"
-        val client = AsyncHttpClient()
-        client.addHeader("Authorization", "token 7ee940a64fa696c7d1815a59daa053b2e2a5bea6")
-        client.addHeader("User-Agent","request")
-
-        client.get(url, object : AsyncHttpResponseHandler() {
-            override fun onSuccess(
-                statusCode: Int,
-                headers: Array<out Header>?,
-                responseBody: ByteArray?
-            ) {
-                val result = responseBody?.let {
-                    String(it)
-                }
-                try {
-                    val list = JSONArray(result)
-                    for (i in 0 until list.length()) {
-                        val githubUser = list.getJSONObject(i)
-                        val githubUserItem = UserItems()
-                        githubUserItem.id = githubUser.getInt("id")
-                        githubUserItem.avatar = githubUser.getString("avatar_url")
-                        githubUserItem.username = githubUser.getString("login")
-                        githubUserItem.url = githubUser.getString("html_url")
-                        listItems.add(githubUserItem)
-                    }
-                    listGithubUser.postValue(listItems)
-                } catch (e: Exception) {
-                    Log.d("Exception", e.message.toString())
-                }
-            }
-
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<out Header>?,
-                responseBody: ByteArray?,
-                error: Throwable?
-            ) {
-                val errorMessage = when (statusCode){
-                    401 -> "$statusCode : Bad Request"
-                    403 -> "$statusCode : Forbidden"
-                    404 -> "$statusCode : Not found"
-                    else -> "$statusCode : ${error?.message}"
-                }
-                Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
-    fun getGithubUsers() : LiveData<ArrayList<UserItems>>{
-        return listGithubUser
-    }*/
 }

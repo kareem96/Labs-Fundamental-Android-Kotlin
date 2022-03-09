@@ -5,24 +5,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.kareem.appusergithub.data.Result
+import com.kareem.appusergithub.data.model.UserItems
 import com.kareem.appusergithub.presentation.adapter.GithubUserAdapter
 import com.kareem.appusergithub.databinding.FragmentFollowingBinding
 import com.kareem.appusergithub.presentation.viewModel.FollowingViewModel
+import com.kareem.appusergithub.utils.ViewStateCallback
 
 /**
  * A simple [Fragment] subclass.
  * Use the [FollowingFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FollowingFragment : Fragment() {
-    private lateinit var followingViewModel: FollowingViewModel
-    private lateinit var adapter: GithubUserAdapter
-
+class FollowingFragment : Fragment(), ViewStateCallback<List<UserItems>> {
+    private val followingViewModel: FollowingViewModel by viewModels()
+    private lateinit var uAdapter: GithubUserAdapter
     private lateinit var binding: FragmentFollowingBinding
+    private var username:String? = null
 
     companion object {
         private val ARG_USERNAME = "username"
-
         fun newInstance(username: String) : FollowingFragment {
             val fragment = FollowingFragment()
             val bundle = Bundle()
@@ -32,10 +36,7 @@ class FollowingFragment : Fragment() {
             }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentFollowingBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -44,31 +45,56 @@ class FollowingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val username = arguments?.getString(ARG_USERNAME) as String
-        /*showRecyclerGithubUsers(username)*/
+        showRecyclerGithubUsers(username)
     }
 
-    /*private fun showRecyclerGithubUsers(username: String) {
-        adapter = GithubUserAdapter()
-        adapter.notifyDataSetChanged()
-        binding.rvUser.layoutManager = LinearLayoutManager(activity)
-        binding.rvUser.adapter = adapter
+    private fun showRecyclerGithubUsers(username: String) {
+        uAdapter = GithubUserAdapter()
+        binding.rvFollowing.apply {
+            adapter = uAdapter
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        }
 
-        followingViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(FollowingViewModel::class.java)
-        followingViewModel.setGithubUsers(requireActivity().application, username)
-
-        followingViewModel.getGithubUsers().observe(viewLifecycleOwner, Observer { githubUseritems ->
-            if (githubUseritems !== null){
-                adapter.setData(githubUseritems)
-                showLoading(false)
-            }else{
-                adapter.setData(arrayListOf())
-                showLoading(true)
+        followingViewModel.getFollowing(username).observe(viewLifecycleOwner,{
+            when(it){
+                is Result.Error -> onFailed(it.message)
+                is Result.Loading -> onLoading()
+                is Result.Success -> it.data?.let { i -> onSuccess(i) }
             }
         })
-    }*/
-
-    private fun showLoading(state: Boolean) {
-        binding.progressbarFollowing.visibility = if (state) View.VISIBLE else View.GONE
     }
+
+    override fun onSuccess(data: List<UserItems>) {
+        uAdapter.setData(data)
+        binding.apply {
+            tvDummyFollowing.visibility = invisible
+            progressbarFollowing.visibility = invisible
+            rvFollowing.visibility = visible
+        }
+    }
+
+    override fun onFailed(message: String?) {
+        binding.apply {
+            if(message == null){
+                tvDummyFollowing.text = ""
+                tvDummyFollowing.visibility = visible
+            }else{
+                tvDummyFollowing.text = message
+                tvDummyFollowing.visibility = visible
+            }
+            progressbarFollowing.visibility = invisible
+            rvFollowing.visibility = invisible
+        }
+    }
+
+    override fun onLoading() {
+        binding.apply {
+            tvDummyFollowing.visibility = invisible
+            progressbarFollowing.visibility = visible
+            rvFollowing.visibility = invisible
+        }
+    }
+
+
 
 }

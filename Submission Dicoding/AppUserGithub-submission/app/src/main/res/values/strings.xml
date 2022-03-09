@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">App User Github</string>
-    <string name="full_name">Kareem</string>
-    <string name="username">Kareem96</string>
+    <string name="full_name">User</string>
+    <string name="username">User</string>
     <string name="repository">Repository</string>
     <string name="follower">Follower</string>
     <string name="following">Following</string>
@@ -15,4 +15,6 @@
     <string name="title_following">Following</string>
     <string name="title_follower">Follower</string>
     <string name="title_url" translatable="false">url</string>
+    <string name="list_following">List Following</string>
+    <string name="list_follower">List Follower</string>
 </resources>

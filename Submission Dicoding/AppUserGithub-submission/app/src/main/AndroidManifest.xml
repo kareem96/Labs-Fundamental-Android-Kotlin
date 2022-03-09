@@ -12,13 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppUserGithub">
         <activity
+            android:name=".BookmarkActivity"
+            android:exported="false" />
+        <activity
             android:name=".utils.SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.view.DetailActivity"
-            android:exported="true"
-            />
-        <activity android:name="com.kareem.appusergithub.presentation.view.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

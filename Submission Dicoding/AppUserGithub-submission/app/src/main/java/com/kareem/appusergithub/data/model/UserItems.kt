@@ -11,15 +11,15 @@ data class UserItems (
     @field:SerializedName("id")
     @field:ColumnInfo(name="id")
     @field:PrimaryKey
-    val id: Int = 0,
+    val id: Int? = 0,
 
     @field:SerializedName("login")
     @field:ColumnInfo(name="username")
-    val username: String = "",
+    val username: String? = "",
 
     @field:SerializedName("name")
     @field:ColumnInfo(name="name")
-    val name: String = "",
+    val name: String? = "",
 
     @field:SerializedName("avatar_url")
     @field:ColumnInfo(name="avatar_url")
@@ -27,11 +27,11 @@ data class UserItems (
 
     @field:SerializedName("company")
     @field:ColumnInfo(name="company")
-    val company: String? = null,
+    val company: String? = "",
 
     @field:SerializedName("location")
     @field:ColumnInfo(name="location")
-    val location: String? = null,
+    val location: String? = "",
 
     @field:SerializedName("followers")
     @field:ColumnInfo(name="followers")
@@ -46,5 +46,5 @@ data class UserItems (
     val repository: Int? = 0,
 
     @field:ColumnInfo(name="bookmarked")
-    var isBookmarked: Boolean,
+    var isBookmarked: Boolean? = false,
 )

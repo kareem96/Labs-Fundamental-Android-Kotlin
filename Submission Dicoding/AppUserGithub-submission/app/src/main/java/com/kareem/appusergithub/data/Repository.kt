@@ -24,7 +24,7 @@ class Repository (private val application: Application){
         userDao = database.userDao()
 
     }
-    /*private val result = MediatorLiveData<Result<List<UserEntity>>>()*/
+
     fun getSearch(query:String): LiveData<Result<List<UserItems>>> {
         val result = MutableLiveData<Result<List<UserItems>>>()
         result.postValue(Result.Loading())
@@ -35,13 +35,6 @@ class Repository (private val application: Application){
                     result.postValue(Result.Error(null))
                 else
                     result.postValue(Result.Success(list))
-               /* if (response.isSuccessful){
-                    val list = response.body()?.items
-                    if(list.isNullOrEmpty())
-                        result.postValue(Result.Error(null))
-                    else
-                        result.postValue(Result.Success(list))
-                }*/
             }
             override fun onFailure(call: Call<SearchResponse>, t: Throwable) {
                 result.postValue(Result.Error(t.message))
@@ -67,6 +60,63 @@ class Repository (private val application: Application){
             })
         }
         return user
+    }
+
+    fun getFollowers(username:String): LiveData<Result<List<UserItems>>>{
+        val listFollowers = MutableLiveData<Result<List<UserItems>>>()
+        listFollowers.postValue(Result.Loading())
+        apiService.getFollowers(username).enqueue(object : Callback<List<UserItems>>{
+            override fun onResponse(
+                call: Call<List<UserItems>>,
+                response: Response<List<UserItems>>
+            ) {
+                val list = response.body()
+                if(list.isNullOrEmpty())
+                    listFollowers.postValue(Result.Error(null))
+                else
+                    listFollowers.postValue(Result.Success(list))
+            }
+
+            override fun onFailure(call: Call<List<UserItems>>, t: Throwable) {
+                listFollowers.postValue(Result.Error(t.message))
+            }
+
+        })
+        return listFollowers
+    }
+
+    fun getFollowing(username:String): LiveData<Result<List<UserItems>>>{
+        val listFollowing = MutableLiveData<Result<List<UserItems>>>()
+        listFollowing.postValue(Result.Loading())
+        apiService.getFollowing(username).enqueue(object : Callback<List<UserItems>>{
+            override fun onResponse(
+                call: Call<List<UserItems>>,
+                response: Response<List<UserItems>>
+            ) {
+                val list = response.body()
+                if(list.isNullOrEmpty())
+                    listFollowing.postValue(Result.Error(null))
+                else
+                    listFollowing.postValue(Result.Success(list))
+            }
+
+            override fun onFailure(call: Call<List<UserItems>>, t: Throwable) {
+                listFollowing.postValue(Result.Error(t.message))
+            }
+
+        })
+        return listFollowing
+    }
+
+    suspend fun getBookmarkedUser(): LiveData<Result<List<UserItems>>>{
+        val listBookmarked = MutableLiveData<Result<List<UserItems>>>()
+        listBookmarked.postValue(Result.Loading())
+        if(userDao.getListBookmark().isNullOrEmpty())
+            listBookmarked.postValue(Result.Error(null))
+        else
+            listBookmarked.postValue(Result.Success(userDao.getListBookmark()))
+
+        return listBookmarked
     }
 
     suspend fun insertBookmarkedUser(user: UserItems) = userDao.insertUser(user)

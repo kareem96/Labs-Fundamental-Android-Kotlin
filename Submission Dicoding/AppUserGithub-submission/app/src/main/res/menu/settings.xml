@@ -5,6 +5,16 @@
     <item
         android:title="@string/change_language_settings"
         app:showAsAction="always"
-        android:icon="@drawable/ic_baseline_language_24"
+        android:icon="@drawable/ic_bookmark"
+        android:id="@+id/action_bookmark"/>
+    <item
+        android:title="@string/change_language_settings"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_dark_mode"
+        android:id="@+id/action_mode"/>
+    <item
+        android:title="@string/change_language_settings"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_language"
         android:id="@+id/action_setting"/>
 </menu>
