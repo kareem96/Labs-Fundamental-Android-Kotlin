@@ -1,4 +1,4 @@
-package com.kareem.appusergithub.data.local.entity
+package com.kareem.appusergithub.data.local.room
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

@@ -8,6 +8,8 @@ import com.kareem.appusergithub.presentation.repository.Repository
 import com.kareem.appusergithub.presentation.viewModel.MainViewModel
 
 class ViewModelFactory private constructor(private val repository: Repository): ViewModelProvider.NewInstanceFactory(){
+
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(MainViewModel::class.java)){
             return MainViewModel(repository) as T

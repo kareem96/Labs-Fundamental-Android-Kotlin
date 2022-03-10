@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.kareem.appusergithub.data.local.room.UserItems
+import com.kareem.appusergithub.data.remote.UserItems
 import com.kareem.appusergithub.databinding.UserItemBinding
 
 class GithubUserAdapter(private val listUser: ArrayList<UserItems>): RecyclerView.Adapter<GithubUserAdapter.GithubUserViewHolder>() {

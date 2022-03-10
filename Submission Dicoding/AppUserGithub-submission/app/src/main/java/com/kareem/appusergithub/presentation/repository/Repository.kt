@@ -4,11 +4,10 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.kareem.appusergithub.data.local.room.UserDao
-import com.kareem.appusergithub.data.local.room.UserItems
-import com.kareem.appusergithub.data.model.SearchResponse
-
+import com.kareem.appusergithub.data.remote.UserItems
+import com.kareem.appusergithub.data.remote.SearchResponse
 import com.kareem.appusergithub.data.remote.ApiService
-import com.kareem.appusergithub.data.response.DetailResponse
+import com.kareem.appusergithub.data.remote.DetailResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -70,6 +69,60 @@ class Repository private constructor(
                 }
             }
             override fun onFailure(call: Call<DetailResponse>, t: Throwable) {
+                Log.d("TAG", "onFailure: ${t.message.toString()}")
+            }
+        })
+    }
+
+    /*
+    *
+    */
+
+    private val _follower = MutableLiveData<ArrayList<UserItems>>()
+    val follower: LiveData<ArrayList<UserItems>> = _follower
+    fun getFollowers(username:String){
+        _isLoading.value = true
+        val retrofit = apiService.getFollowers(username)
+        retrofit.enqueue(object : Callback<ArrayList<UserItems>>{
+            override fun onResponse(
+                call: Call<ArrayList<UserItems>>,
+                response: Response<ArrayList<UserItems>>
+            ) {
+                _isLoading.value = false
+                if(response.isSuccessful){
+                    _follower.value = response.body()
+                }else{
+                    Log.d("TAG", "onResponse: ${response.message()}")
+                }
+            }
+            override fun onFailure(call: Call<ArrayList<UserItems>>, t: Throwable) {
+                Log.d("TAG", "onFailure: ${t.message.toString()}")
+            }
+        })
+    }
+
+    /*
+    *
+    */
+    private val _following = MutableLiveData<ArrayList<UserItems>>()
+    val following : LiveData<ArrayList<UserItems>> = _following
+    fun getFollowing(username:String){
+        _isLoading.value = true
+        val retrofit = apiService.getFollowing(username)
+        retrofit.enqueue(object : Callback<ArrayList<UserItems>>{
+            override fun onResponse(
+                call: Call<ArrayList<UserItems>>,
+                response: Response<ArrayList<UserItems>>
+            ) {
+                _isLoading.value = false
+                if(response.isSuccessful){
+                    _following.value = response.body()
+                }else{
+                    Log.d("TAG", "onResponse: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<ArrayList<UserItems>>, t: Throwable) {
                 Log.d("TAG", "onFailure: ${t.message.toString()}")
             }
         })

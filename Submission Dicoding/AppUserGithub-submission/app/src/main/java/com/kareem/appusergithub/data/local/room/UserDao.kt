@@ -2,7 +2,6 @@ package com.kareem.appusergithub.data.local.room
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.kareem.appusergithub.data.local.entity.UserEntity
 
 
 @Dao

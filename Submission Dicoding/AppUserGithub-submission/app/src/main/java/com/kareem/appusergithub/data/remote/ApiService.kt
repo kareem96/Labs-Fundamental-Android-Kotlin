@@ -1,8 +1,7 @@
 package com.kareem.appusergithub.data.remote
 
-import com.kareem.appusergithub.data.local.room.UserItems
-import com.kareem.appusergithub.data.model.SearchResponse
-import com.kareem.appusergithub.data.response.DetailResponse
+
+
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -12,8 +11,7 @@ interface ApiService {
 
     @GET("users/{username}")
     fun getDetailUser(
-        @Path("username")
-        username: String
+        @Path("username") username: String
     ): Call<DetailResponse>
 
     @GET("search/users")
@@ -26,12 +24,12 @@ interface ApiService {
     fun getFollowers(
         @Path("username")
         username: String
-    ): Call<List<UserItems>>
+    ): Call<ArrayList<UserItems>>
 
     @GET("users/{username}/following")
     fun getFollowing(
         @Path("username")
         username: String
-    ): Call<List<UserItems>>
+    ): Call<ArrayList<UserItems>>
 
 }

@@ -16,9 +16,9 @@ import com.kareem.appusergithub.R
 import com.kareem.appusergithub.utils.SettingsActivity
 import com.kareem.appusergithub.presentation.adapter.GithubUserAdapter
 import com.kareem.appusergithub.data.ViewModelFactory
-import com.kareem.appusergithub.data.local.room.UserItems
+import com.kareem.appusergithub.data.remote.UserItems
 import com.kareem.appusergithub.databinding.ActivityMainBinding
-import com.kareem.appusergithub.presentation.view.DetailActivity.Companion.EXTRA_GITHUB_USER
+import com.kareem.appusergithub.presentation.view.DetailActivity.Companion.DATA_TAG
 import com.kareem.appusergithub.presentation.viewModel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -71,29 +71,17 @@ class MainActivity : AppCompatActivity() {
         uAdapter.setOnItemClickCallback(object : GithubUserAdapter.OnItemClickCallback{
             override fun onItemClicked(data: UserItems) {
                 val intent = Intent(this@MainActivity, DetailActivity::class.java)
-                intent.putExtra(EXTRA_GITHUB_USER, data)
+                intent.putExtra(DATA_TAG, data)
                 startActivity(intent)
             }
         })
     }
 
-    /*private fun searchGithubUser() {
-        binding.searchView.apply {
-            setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-                override fun onQueryTextSubmit(query: String): Boolean {
-                    mainViewModel.getDetailUser(query)
-                 return true
-                }
-                override fun onQueryTextChange(newText: String?): Boolean {
-                    return false
-                }
-            })
-        }
-    }*/
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.settings, menu)
-        return super.onCreateOptionsMenu(menu)
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.settings, menu)
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

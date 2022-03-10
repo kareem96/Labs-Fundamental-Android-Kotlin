@@ -8,7 +8,7 @@
         <entry key="app/src/main/res/drawable/ic_bookmark_added.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_language.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_bookmark.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.10185185185185185" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_followers.xml" value="0.14" />

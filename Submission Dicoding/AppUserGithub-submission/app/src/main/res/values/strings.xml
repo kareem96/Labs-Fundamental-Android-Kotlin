@@ -17,4 +17,6 @@
     <string name="title_url" translatable="false">url</string>
     <string name="list_following">List Following</string>
     <string name="list_follower">List Follower</string>
+    <string name="followers">Followers</string>
+    <string name="detail_user">Detail</string>
 </resources>

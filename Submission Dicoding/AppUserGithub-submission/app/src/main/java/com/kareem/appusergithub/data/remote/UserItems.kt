@@ -1,4 +1,4 @@
-package com.kareem.appusergithub.data.local.room
+package com.kareem.appusergithub.data.remote
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

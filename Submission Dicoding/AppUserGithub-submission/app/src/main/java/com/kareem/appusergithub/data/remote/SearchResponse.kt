@@ -1,8 +1,7 @@
-package com.kareem.appusergithub.data.model
+package com.kareem.appusergithub.data.remote
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import com.kareem.appusergithub.data.local.room.UserItems
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
