@@ -17,6 +17,7 @@ import com.kareem.appusergithub.databinding.FragmentFollowingBinding
 import com.kareem.appusergithub.presentation.adapter.SectionPagerAdapter
 import com.kareem.appusergithub.presentation.adapter.SectionPagerAdapter.Companion.BUNDLE
 import com.kareem.appusergithub.presentation.viewModel.MainViewModel
+import com.kareem.appusergithub.utils.ViewStateCallback
 
 /**
  * A simple [Fragment] subclass.
@@ -24,20 +25,9 @@ import com.kareem.appusergithub.presentation.viewModel.MainViewModel
  * create an instance of this fragment.
  */
 class FollowingFragment : Fragment(){
-    private lateinit var uAdapter: GithubUserAdapter
     private lateinit var binding: FragmentFollowingBinding
     private lateinit var mainViewModel: MainViewModel
 
-    /*companion object {
-        private val ARG_USERNAME = "username"
-        fun newInstance(username: String) : FollowingFragment {
-            val fragment = FollowingFragment()
-            val bundle = Bundle()
-            bundle.putString(ARG_USERNAME, username)
-            fragment.arguments = bundle
-            return fragment
-            }
-    }*/
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentFollowingBinding.inflate(layoutInflater)
@@ -46,7 +36,7 @@ class FollowingFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val username = arguments?.getString(SectionPagerAdapter.BUNDLE)
+        val username = arguments?.getString(BUNDLE)
 
         val factory: ViewModelFactory = ViewModelFactory.getInstance(requireContext())
         mainViewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
@@ -55,6 +45,14 @@ class FollowingFragment : Fragment(){
         mainViewModel.following.observe(viewLifecycleOwner){
             listFollowing(it)
         }
+
+        mainViewModel.isLoading.observe(viewLifecycleOwner, { loading ->
+            showLoading(loading)
+        })
+    }
+
+    private fun showLoading(loading: Boolean) {
+        binding.progressbarFollowing.visibility = if(loading) View.VISIBLE else View.GONE
     }
 
     private fun listFollowing(response: ArrayList<UserItems>) {
@@ -63,8 +61,12 @@ class FollowingFragment : Fragment(){
         }else{
             binding.rvFollowing.layoutManager = LinearLayoutManager(requireContext())
         }
+
+
+
         val uAdapter = GithubUserAdapter(response)
         binding.rvFollowing.adapter = uAdapter
+
         uAdapter.setOnItemClickCallback(object : GithubUserAdapter.OnItemClickCallback{
             override fun onItemClicked(data: UserItems) {
                 val intent = Intent(requireContext(), DetailActivity::class.java)
@@ -74,4 +76,6 @@ class FollowingFragment : Fragment(){
 
         })
     }
+
+
 }

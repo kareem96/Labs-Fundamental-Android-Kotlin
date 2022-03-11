@@ -7,23 +7,33 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kareem.appusergithub.BookmarkActivity
 import com.kareem.appusergithub.R
-import com.kareem.appusergithub.utils.SettingsActivity
 import com.kareem.appusergithub.presentation.adapter.GithubUserAdapter
 import com.kareem.appusergithub.data.ViewModelFactory
 import com.kareem.appusergithub.data.remote.UserItems
 import com.kareem.appusergithub.databinding.ActivityMainBinding
 import com.kareem.appusergithub.presentation.view.DetailActivity.Companion.DATA_TAG
 import com.kareem.appusergithub.presentation.viewModel.MainViewModel
+import com.kareem.appusergithub.presentation.viewModel.SettingViewModel
+import com.kareem.appusergithub.presentation.viewModel.SettingViewModelFactory
+import com.kareem.appusergithub.utils.SettingsMode
+
+
+//private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var mainViewModel: MainViewModel
+    private val dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+    private var darkMode : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +41,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.rvMain.setHasFixedSize(true)
+
+        themeMode()
 
         val factory: ViewModelFactory = ViewModelFactory.getInstance(this@MainActivity)
         mainViewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
@@ -54,6 +66,20 @@ class MainActivity : AppCompatActivity() {
             })
         }
 //        searchGithubUser()
+    }
+
+    private fun themeMode() {
+        val prefs = SettingsMode.getInstance(dataStore)
+        val settingModel = ViewModelProvider(this, SettingViewModelFactory(prefs)).get(
+            SettingViewModel::class.java
+        )
+        settingModel.getThemeSettings().observe(this,{isDarkModeActive:Boolean ->
+            if(isDarkModeActive){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }else{
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        })
     }
 
     private fun showLoading(loading: Boolean) {
@@ -85,8 +111,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        setMode(item.itemId)
-        return super.onOptionsItemSelected(item)
+        when(item.itemId){
+            R.id.action_setting -> {
+                startActivity(Intent(this, SettingsActivity::class.java))
+                return true
+            }
+            R.id.action_mode -> {
+                startActivity(Intent(this, ModeActivity::class.java))
+                return true
+            }
+            R.id.action_bookmark -> {
+                startActivity(Intent(this, StarActivity::class.java))
+                return true
+            }
+            else -> return true
+        }
+
+//        return super.onOptionsItemSelected(item)
     }
 
     private fun setMode(selectedMode: Int) {
@@ -95,10 +136,10 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, SettingsActivity::class.java))
             }
             R.id.action_mode -> {
-                startActivity(Intent(this, SettingsActivity::class.java))
+                startActivity(Intent(this, ModeActivity::class.java))
             }
             R.id.action_bookmark -> {
-                startActivity(Intent(this, BookmarkActivity::class.java))
+                startActivity(Intent(this, StarActivity::class.java))
             }
         }
     }

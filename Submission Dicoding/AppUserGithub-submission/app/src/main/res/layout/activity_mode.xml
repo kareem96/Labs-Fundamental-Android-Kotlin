@@ -4,20 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.view.FollowerFragment">
+    tools:context=".presentation.view.ModeActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_followers"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/changeTheme"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
-
-    <include
-        android:id="@+id/progressBar_follower"
-        layout="@layout/progress_bar"/>
+        android:text="@string/change_theme"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

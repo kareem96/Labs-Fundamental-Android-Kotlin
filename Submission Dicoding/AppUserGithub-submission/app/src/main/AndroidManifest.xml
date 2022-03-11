@@ -12,10 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppUserGithub">
         <activity
-            android:name=".BookmarkActivity"
+            android:name=".presentation.view.StarActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.view.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".utils.SettingsActivity"
+            android:name=".presentation.view.ModeActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.view.DetailActivity"

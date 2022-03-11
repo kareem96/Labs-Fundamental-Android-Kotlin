@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.kareem.appusergithub.presentation.view.FollowerFragment
 import com.kareem.appusergithub.presentation.view.FollowingFragment
-import com.kareem.appusergithub.utils.Constant.TABS_TITLES
 
 class SectionPagerAdapter (activity: AppCompatActivity, val username:String) : FragmentStateAdapter(activity) {
     companion object{

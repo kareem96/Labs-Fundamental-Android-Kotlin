@@ -5,7 +5,7 @@ import com.kareem.appusergithub.R
 
 object Constant {
     const val BASE_URL = "https://api.github.com/"
-    const val API_KEY = "token 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"
+    const val API_KEY = "token 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"
 
     @StringRes
     val TABS_TITLES = intArrayOf(

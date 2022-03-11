@@ -14,6 +14,6 @@ class UserEntity(
     @field:ColumnInfo(name="avatar_url")
     val avatar: String,
 
-    @field:ColumnInfo(name="bookmarked")
+    @field:ColumnInfo(name="star")
     var isBookmarked: Boolean,
 )

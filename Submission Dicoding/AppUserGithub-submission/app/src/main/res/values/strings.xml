@@ -16,7 +16,11 @@
     <string name="title_follower">Follower</string>
     <string name="title_url" translatable="false">url</string>
     <string name="list_following">List Following</string>
-    <string name="list_follower">List Follower</string>
-    <string name="followers">Followers</string>
-    <string name="detail_user">Detail</string>
+    <string name="list_follower">Not Found Follower</string>
+    <string name="followers" translatable="false">Followers</string>
+    <string name="detail_user" translatable="false">Detail</string>
+    <string name="not_found_following" translatable="false">Not Found Following</string>
+    <string name="unstar">Unstar</string>
+    <string name="star">Star</string>
+    <string name="change_theme">Change Theme</string>
 </resources>

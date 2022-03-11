@@ -7,10 +7,10 @@ import androidx.room.*
 @Dao
 interface UserDao {
     @Query("SELECT * FROM user")
-    fun getListBookmark(): LiveData<List<UserEntity>>
+    fun getListStar(): LiveData<List<UserEntity>>
 
-    @Query("SELECT EXISTS(SELECT * FROM user where username = :username AND bookmarked = 1)")
-    suspend fun getBookmarkedUser(username:String): Boolean
+    @Query("SELECT EXISTS(SELECT * FROM user where username = :username AND star = 1)")
+    suspend fun getStarUser(username:String): Boolean
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUser(user: UserEntity)

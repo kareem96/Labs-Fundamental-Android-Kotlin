@@ -1,5 +1,6 @@
 package com.kareem.appusergithub.presentation.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -13,10 +14,12 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.kareem.appusergithub.R
 import com.kareem.appusergithub.data.ViewModelFactory
+import com.kareem.appusergithub.data.local.room.UserEntity
 import com.kareem.appusergithub.data.remote.UserItems
 import com.kareem.appusergithub.data.remote.DetailResponse
 import com.kareem.appusergithub.presentation.adapter.SectionPagerAdapter
 import com.kareem.appusergithub.databinding.ActivityDetailBinding
+import com.kareem.appusergithub.presentation.view.DetailActivity.Companion.DATA_TAG
 import com.kareem.appusergithub.presentation.viewModel.MainViewModel
 import com.kareem.appusergithub.utils.Constant.TABS_TITLES
 
@@ -53,46 +56,57 @@ class DetailActivity : AppCompatActivity(){
             showLoading(loading)
         })
 
-//        mainViewModel.isUserFavorited(data?.login.toString())
+        mainViewModel.getStarUser(data?.login.toString())
 
-        /*binding.fabFavorite.setOnClickListener {
+        binding.fabShare.setOnClickListener {
+            val shareIntent = Intent()
+            shareIntent.action = Intent.ACTION_SEND
+            shareIntent.type = "text/plain"
+            shareIntent.putExtra(
+                Intent.EXTRA_TEXT,"$data"
+            )
+            startActivity(Intent.createChooser(shareIntent,"Share Github User"))
+
+        }
+
+        binding.fabStar.setOnClickListener {
             val mUser = UserEntity(
                 data?.login.toString(),
                 data?.avatarUrl.toString(),
                 true
             )
             if (!isFavorited) {
-                mainViewModel.insertFavorite(mUser)
+                mainViewModel.insertStar(mUser)
                 Toast.makeText(
                     applicationContext,
-                    R.string.favorited,
+                    R.string.star,
                     Toast.LENGTH_SHORT
                 ).show()
-                mainViewModel.isUserFavorited(data?.login.toString())
+                mainViewModel.getStarUser(data?.login.toString())
             } else {
-                mainViewModel.deleteFavorite(mUser)
+                mainViewModel.deleteStart(mUser)
                 Toast.makeText(
                     applicationContext,
-                    R.string.delete_favorited,
+                    R.string.unstar,
                     Toast.LENGTH_SHORT
                 ).show()
-                mainViewModel.isUserFavorited(data?.login.toString())
+                mainViewModel.getStarUser(data?.login.toString())
             }
-        }*/
+        }
 
-        /*mainViewModel.isFavorited.observe(this, { favorited ->
+        mainViewModel.isStar.observe(this, { favorited ->
             isFavorited = if (favorited) {
-                binding.fabFavorite.setImageResource(R.drawable.ic_favorited)
+                binding.fabStar.setImageResource(R.drawable.ic_unstar)
                 true
             } else {
-                binding.fabFavorite.setImageResource(R.drawable.ic_favorite)
+                binding.fabStar.setImageResource(R.drawable.ic_star)
                 false
             }
-        })*/
+        })
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.title = getString(R.string.detail_user)
+        supportActionBar?.title = data?.login.toString()
         supportActionBar?.elevation = 0f
 
     }
@@ -104,27 +118,10 @@ class DetailActivity : AppCompatActivity(){
     private fun setDetailUser(detail: DetailResponse) {
         binding.name.text = detail.login
         binding.name.text = detail.name
-        /*if (detail.publicRepos != null) {
-            binding.tvRepository.text = detail.publicRepos.toString()
-        } else {
-            binding.icRepository.visibility = View.GONE
-            binding.textRepository.visibility = View.GONE
-        }*/
-
-        /*if (detail.company != null) {
-            binding.tvCompany.text = detail.company
-        } else {
-            binding.icCompany.visibility = View.GONE
-        }*/
-
-        /*if (detail.location != null) {
-            binding.tvLocation.text = detail.location
-        } else {
-            binding.icLokasi.visibility = View.GONE
-        }*/
-
-        binding.txtFollower.text = detail.followers.toString() ?: "0"
-        binding.txtFollowing.text = detail.following.toString() ?: "0"
+        binding.txtRepository.text = detail.publicRepos.toString()
+        binding.loc.text = detail.location
+        binding.txtFollower.text = detail.followers.toString()
+        binding.txtFollowing.text = detail.following.toString()
 
         Glide.with(this)
             .load(detail.avatarUrl)

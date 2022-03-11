@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.kareem.appusergithub.data.local.room.UserDao
+import com.kareem.appusergithub.data.local.room.UserEntity
 import com.kareem.appusergithub.data.remote.UserItems
 import com.kareem.appusergithub.data.remote.SearchResponse
 import com.kareem.appusergithub.data.remote.ApiService
@@ -74,10 +75,10 @@ class Repository private constructor(
         })
     }
 
+
     /*
     *
     */
-
     private val _follower = MutableLiveData<ArrayList<UserItems>>()
     val follower: LiveData<ArrayList<UserItems>> = _follower
     fun getFollowers(username:String){
@@ -126,6 +127,27 @@ class Repository private constructor(
                 Log.d("TAG", "onFailure: ${t.message.toString()}")
             }
         })
+    }
+
+
+    suspend fun insertStar(user: UserEntity){
+        val uEntity = UserEntity(
+            user.username,
+            user.avatar,
+            true
+        )
+        userDao.insertUser(uEntity)
+    }
+
+    suspend fun deleteStar(user: UserEntity){
+        val uEntity = UserEntity(user.username, user.avatar, false)
+        userDao.deleteAll(uEntity)
+    }
+
+    fun getAllStar():LiveData<List<UserEntity>> = userDao.getListStar()
+
+    suspend fun getStarUser(username: String): Boolean{
+        return  userDao.getStarUser(username)
     }
 
 

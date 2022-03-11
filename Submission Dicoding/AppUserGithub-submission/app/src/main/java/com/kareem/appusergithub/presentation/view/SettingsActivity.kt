@@ -1,4 +1,4 @@
-package com.kareem.appusergithub.utils
+package com.kareem.appusergithub.presentation.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
