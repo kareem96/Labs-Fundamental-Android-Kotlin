@@ -4,129 +4,129 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
-import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModelProvider
-import androidx.viewpager2.widget.ViewPager2
-import com.bumptech.glide.Glide
-import com.google.android.material.tabs.TabLayout
+import coil.load
 import com.google.android.material.tabs.TabLayoutMediator
 import com.kareem.appusergithub.R
-import com.kareem.appusergithub.data.ViewModelFactory
-import com.kareem.appusergithub.data.local.room.UserEntity
-import com.kareem.appusergithub.data.remote.UserItems
-import com.kareem.appusergithub.data.remote.DetailResponse
+import com.kareem.appusergithub.presentation.viewModel.ViewModelFactory
+import com.kareem.appusergithub.data.response.DetailResponse
 import com.kareem.appusergithub.presentation.adapter.SectionPagerAdapter
 import com.kareem.appusergithub.databinding.ActivityDetailBinding
-import com.kareem.appusergithub.presentation.view.DetailActivity.Companion.DATA_TAG
-import com.kareem.appusergithub.presentation.viewModel.MainViewModel
-import com.kareem.appusergithub.utils.Constant.TABS_TITLES
+import com.kareem.appusergithub.presentation.viewModel.DetailViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class DetailActivity : AppCompatActivity(){
+class DetailActivity : AppCompatActivity() {
     lateinit var binding: ActivityDetailBinding
-    private lateinit var mainViewModel: MainViewModel
-    private var isFavorited: Boolean = false
+    private lateinit var detailViewModel: DetailViewModel
+    private var isChecked = false
+    private lateinit var username: String
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val data = intent.getParcelableExtra<UserItems>(DATA_TAG)
+        detailViewModel = obtainFactory(this as AppCompatActivity)
 
-        val sectionPagerAdapter = SectionPagerAdapter(this, data?.login.toString())
-        val viewPager: ViewPager2 = binding.viewPager
-        viewPager.adapter = sectionPagerAdapter
-        val tabs: TabLayout = binding.tabs
-        TabLayoutMediator(tabs, viewPager) { tab, position ->
-            tab.text = resources.getString(TAB_TITLES[position])
-        }.attach()
+        viewPager()
 
-        val factory: ViewModelFactory = ViewModelFactory.getInstance(this@DetailActivity)
-        mainViewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
+        val id = intent.getIntExtra(EXTRA_ID, 0)
+        val avatarUrl = intent.getStringExtra(EXTRA_AVATAR)
+        username = intent.getStringExtra(EXTRA_USERNAME) as String
 
-        mainViewModel.getDetailUser(data?.login.toString())
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = username
+        supportActionBar?.elevation = 0f
 
-        mainViewModel.detailUser.observe(this, { detail ->
-            setDetailUser(detail)
-        })
+        detailViewModel.getDetail(username).observe(this){ detail ->
+            contentDetails(detail)
+        }
 
-        mainViewModel.isLoading.observe(this, { loading ->
-            showLoading(loading)
-        })
+        CoroutineScope(Dispatchers.IO).launch {
+            val count = detailViewModel.getStarUser(id)
+            withContext(Dispatchers.Main){
+                isChecked = if (count > 0){
+                    isStar(true)
+                    true
+                }else{
+                    isStar(false)
+                    false
+                }
+            }
+        }
 
-        mainViewModel.getStarUser(data?.login.toString())
 
         binding.fabShare.setOnClickListener {
             val shareIntent = Intent()
             shareIntent.action = Intent.ACTION_SEND
             shareIntent.type = "text/plain"
             shareIntent.putExtra(
-                Intent.EXTRA_TEXT,"$data"
+                Intent.EXTRA_TEXT, "$id"
             )
-            startActivity(Intent.createChooser(shareIntent,"Share Github User"))
+            startActivity(Intent.createChooser(shareIntent, "Share Github User"))
 
         }
 
         binding.fabStar.setOnClickListener {
-            val mUser = UserEntity(
-                data?.login.toString(),
-                data?.avatarUrl.toString(),
-                true
-            )
-            if (!isFavorited) {
-                mainViewModel.insertStar(mUser)
-                Toast.makeText(
-                    applicationContext,
-                    R.string.star,
-                    Toast.LENGTH_SHORT
-                ).show()
-                mainViewModel.getStarUser(data?.login.toString())
-            } else {
-                mainViewModel.deleteStart(mUser)
-                Toast.makeText(
-                    applicationContext,
-                    R.string.unstar,
-                    Toast.LENGTH_SHORT
-                ).show()
-                mainViewModel.getStarUser(data?.login.toString())
+            isChecked = !isChecked
+            if(isChecked){
+                detailViewModel.insertStar(id, username, avatarUrl!!)
+                Toast.makeText(this, "Berhasil menambahkan Favorite", Toast.LENGTH_SHORT).show()
+            }else{
+                detailViewModel.deleteStart(id)
+                Toast.makeText(this, "Berhasil menghapus Favorite", Toast.LENGTH_SHORT).show()
             }
+            isStar(isChecked)
         }
 
-        mainViewModel.isStar.observe(this, { favorited ->
-            isFavorited = if (favorited) {
-                binding.fabStar.setImageResource(R.drawable.ic_unstar)
-                true
-            } else {
-                binding.fabStar.setImageResource(R.drawable.ic_star)
-                false
+    }
+
+    private fun isStar(condition: Boolean) {
+        val buttonFab = binding.fabStar
+        if(condition){
+            buttonFab.setImageResource(R.drawable.ic_unstar)
+        }else{
+            buttonFab.setImageResource(R.drawable.ic_star)
+        }
+    }
+
+    private fun viewPager(){
+        val sectionPagerAdapter = listOf(FollowerFragment(), FollowingFragment())
+        val viewPager = listOf("Followers","Following")
+
+        binding.viewPager.adapter = SectionPagerAdapter(sectionPagerAdapter, this.supportFragmentManager, lifecycle)
+        TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
+            tab.text = viewPager[position]
+        }.attach()
+    }
+
+    private fun contentDetails(detail: DetailResponse) {
+        binding.apply {
+            name.text = detail.name
+            loc.text = detail.location
+            txtFollower.text = detail.followers.toString()
+            txtFollowing.text = detail.following.toString()
+            txtRepository.text = detail.publicRepos.toString()
+            imageDetail.load(detail.avatarUrl){
+                placeholder(R.drawable.ic_placeholder)
             }
-        })
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.title = data?.login.toString()
-        supportActionBar?.elevation = 0f
-
+        }
     }
 
-    private fun showLoading(loading: Boolean) {
-        binding.progressBar.progressBar.visibility = if (loading) View.VISIBLE else View.GONE
+    private fun obtainFactory(activity: AppCompatActivity): DetailViewModel{
+        val factory: ViewModelFactory = ViewModelFactory.getInstance(activity.application)
+        return ViewModelProvider(activity, factory)[DetailViewModel::class.java]
     }
 
-    private fun setDetailUser(detail: DetailResponse) {
-        binding.name.text = detail.login
-        binding.name.text = detail.name
-        binding.txtRepository.text = detail.publicRepos.toString()
-        binding.loc.text = detail.location
-        binding.txtFollower.text = detail.followers.toString()
-        binding.txtFollowing.text = detail.following.toString()
-
-        Glide.with(this)
-            .load(detail.avatarUrl)
-            .circleCrop()
-            .into(binding.imageDetail)
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+//        finish()
+        return super.onSupportNavigateUp()
     }
 
 
@@ -135,15 +135,13 @@ class DetailActivity : AppCompatActivity(){
         return super.onOptionsItemSelected(item)
     }
 
+    fun getData(): String = username
 
     companion object {
-        @StringRes
-        private val TAB_TITLES = intArrayOf(
-            R.string.followers,
-            R.string.following
-        )
-
-        const val DATA_TAG = "DATA"
+//        const val DATA_TAG = "DATA"
+        const val EXTRA_ID = "extra_id"
+        const val EXTRA_USERNAME = "extra_username"
+        const val EXTRA_AVATAR = "extra_avatar"
     }
 
 }

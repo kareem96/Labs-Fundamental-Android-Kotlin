@@ -6,11 +6,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_github"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_github_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppUserGithub">
+
         <activity
             android:name=".presentation.view.StarActivity"
             android:exported="true" />
@@ -22,9 +23,13 @@
             android:exported="false" />
         <activity
             android:name=".presentation.view.DetailActivity"
+            android:noHistory="true"
             android:exported="false" />
         <activity
             android:name=".presentation.view.MainActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".presentation.view.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

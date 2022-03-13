@@ -9,6 +9,8 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -17,92 +19,103 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kareem.appusergithub.R
 import com.kareem.appusergithub.presentation.adapter.GithubUserAdapter
-import com.kareem.appusergithub.data.ViewModelFactory
-import com.kareem.appusergithub.data.remote.UserItems
+import com.kareem.appusergithub.presentation.viewModel.ViewModelFactory
 import com.kareem.appusergithub.databinding.ActivityMainBinding
-import com.kareem.appusergithub.presentation.view.DetailActivity.Companion.DATA_TAG
 import com.kareem.appusergithub.presentation.viewModel.MainViewModel
 import com.kareem.appusergithub.presentation.viewModel.SettingViewModel
 import com.kareem.appusergithub.presentation.viewModel.SettingViewModelFactory
 import com.kareem.appusergithub.utils.SettingsMode
 
 
-//private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
-
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var mainViewModel: MainViewModel
+    private lateinit var adapter: GithubUserAdapter
+
     private val dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
-    private var darkMode : Boolean = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.rvMain.setHasFixedSize(true)
+        mainViewModel = obtainFactory(this as AppCompatActivity)
+
+        if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            binding.rvMain.layoutManager = GridLayoutManager(this, 2)
+        } else {
+            binding.rvMain.layoutManager = LinearLayoutManager(this)
+        }
+        adapter = GithubUserAdapter()
+        binding.rvMain.apply {
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            setHasFixedSize(true)
+            adapter = this@MainActivity.adapter
+        }
 
         themeMode()
-
-        val factory: ViewModelFactory = ViewModelFactory.getInstance(this@MainActivity)
-        mainViewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
-
-        mainViewModel.searchUser.observe(this@MainActivity) { response ->
-            showRecyclerGithubUser(response)
-        }
-
-        mainViewModel.isLoading.observe(this) { loading ->
-            showLoading(loading)
-        }
+        showTextDummy(true)
         binding.searchView.apply {
-            setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-                override fun onQueryTextSubmit(query: String): Boolean {
-                    mainViewModel.getUser(query)
+            setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    if(query != null){
+                        setData(query)
+                    }
                     return true
                 }
+
                 override fun onQueryTextChange(newText: String?): Boolean {
                     return false
                 }
             })
         }
-//        searchGithubUser()
+
+
+    }
+    private fun obtainFactory(activity: AppCompatActivity): MainViewModel{
+        val factory: ViewModelFactory = ViewModelFactory.getInstance(activity.application)
+        return ViewModelProvider(this, factory)[MainViewModel::class.java]
     }
 
     private fun themeMode() {
         val prefs = SettingsMode.getInstance(dataStore)
-        val settingModel = ViewModelProvider(this, SettingViewModelFactory(prefs)).get(
-            SettingViewModel::class.java
-        )
-        settingModel.getThemeSettings().observe(this,{isDarkModeActive:Boolean ->
-            if(isDarkModeActive){
+        val settingModel = ViewModelProvider(this, SettingViewModelFactory(prefs))[SettingViewModel::class.java]
+        settingModel.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
+            if (isDarkModeActive) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            }else{
+            } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
-        })
+        }
     }
+
+    private fun showTextDummy(state: Boolean) {
+        binding.dummyMain.isVisible = state
+        binding.imgDummy.isVisible = state
+    }
+
 
     private fun showLoading(loading: Boolean) {
-        binding.progress.progressBar.visibility = if(loading) View.VISIBLE else View.GONE
-    }
+        binding.apply {
+            progressbar.visibility = if (loading) View.VISIBLE else View.GONE
+            dummyMain.visibility = if(loading) View.INVISIBLE else View.GONE
+            imgDummy.visibility = if(loading) View.INVISIBLE else View.GONE
+            rvMain.isGone = loading
 
-    private fun showRecyclerGithubUser(response: ArrayList<UserItems>) {
-        if(applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
-            binding.rvMain.layoutManager = GridLayoutManager(this, 2)
-        }else{
-            binding.rvMain.layoutManager = LinearLayoutManager(this)
         }
-        val uAdapter = GithubUserAdapter(response)
-        binding.rvMain.adapter = uAdapter
-        uAdapter.setOnItemClickCallback(object : GithubUserAdapter.OnItemClickCallback{
-            override fun onItemClicked(data: UserItems) {
-                val intent = Intent(this@MainActivity, DetailActivity::class.java)
-                intent.putExtra(DATA_TAG, data)
-                startActivity(intent)
-            }
-        })
     }
+    private fun setData(query: String) {
+        showLoading(true)
+        mainViewModel.getSearch(query).observe(this) { list ->
+            list.let {
+                showTextDummy(false)
+                showLoading(false)
+                adapter.setData(it)
+            }
 
+        }
+    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
@@ -111,7 +124,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.action_setting -> {
                 startActivity(Intent(this, SettingsActivity::class.java))
                 return true
@@ -127,21 +140,7 @@ class MainActivity : AppCompatActivity() {
             else -> return true
         }
 
-//        return super.onOptionsItemSelected(item)
     }
 
-    private fun setMode(selectedMode: Int) {
-        when(selectedMode){
-            R.id.action_setting -> {
-                startActivity(Intent(this, SettingsActivity::class.java))
-            }
-            R.id.action_mode -> {
-                startActivity(Intent(this, ModeActivity::class.java))
-            }
-            R.id.action_bookmark -> {
-                startActivity(Intent(this, StarActivity::class.java))
-            }
-        }
-    }
 
 }

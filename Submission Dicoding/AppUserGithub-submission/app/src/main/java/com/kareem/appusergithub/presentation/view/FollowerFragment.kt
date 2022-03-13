@@ -1,23 +1,19 @@
 package com.kareem.appusergithub.presentation.view
 
-import android.content.Intent
-import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kareem.appusergithub.data.ViewModelFactory
-import com.kareem.appusergithub.data.remote.UserItems
+import com.kareem.appusergithub.presentation.viewModel.ViewModelFactory
 import com.kareem.appusergithub.presentation.adapter.GithubUserAdapter
 import com.kareem.appusergithub.databinding.FragmentFollowersBinding
-import com.kareem.appusergithub.presentation.adapter.SectionPagerAdapter.Companion.BUNDLE
-import com.kareem.appusergithub.presentation.view.DetailActivity.Companion.DATA_TAG
-import com.kareem.appusergithub.presentation.viewModel.MainViewModel
-import java.util.ArrayList
+import com.kareem.appusergithub.presentation.viewModel.FollowersViewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -27,57 +23,57 @@ import java.util.ArrayList
 class FollowerFragment : Fragment() {
 
     private var _binding: FragmentFollowersBinding? = null
-    private val binding get() = _binding!!
-    private lateinit var mainViewModel: MainViewModel
+    private val binding get() = _binding
+    private lateinit var followerViewModel: FollowersViewModel
+    private lateinit var detailActivity: DetailActivity
+    private lateinit var username: String
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentFollowersBinding.inflate(inflater, container, false)
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        detailActivity = activity as DetailActivity
+        username = detailActivity.getData()
 
-        val username = arguments?.getString(BUNDLE)
+        val uAdapter = GithubUserAdapter()
+        binding?.rvFollowers?.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+            this.adapter = uAdapter
+        }
 
-        val factory: ViewModelFactory = ViewModelFactory.getInstance(requireContext())
-        mainViewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
+        showLoading(true)
+        showTextDummy(false)
+        followerViewModel = obtainFactory(context as AppCompatActivity)
+        followerViewModel.getFollowers(username).observe(viewLifecycleOwner){ followerList ->
+            if(followerList != null && followerList.isNotEmpty()){
+                showLoading(false)
+                showTextDummy(false)
+                uAdapter.setData(followerList)
+            }else{
+                showTextDummy(true)
+                showLoading(false)
+            }
+        }
+    }
 
-        mainViewModel.getFollowers(username.toString())
-        mainViewModel.follower.observe(viewLifecycleOwner, {response ->
-            showFollowerData(response)
-        })
+    private fun obtainFactory(activity: AppCompatActivity): FollowersViewModel{
+        val factory: ViewModelFactory = ViewModelFactory.getInstance(activity.application)
+        return ViewModelProvider(this, factory)[FollowersViewModel::class.java]
+    }
 
-        mainViewModel.isLoading.observe(viewLifecycleOwner, { loading ->
-            showLoading(loading)
-        })
-
+    private fun showTextDummy(state: Boolean) {
+        binding?.dummyFollower?.isVisible = state
     }
 
     private fun showLoading(loading: Boolean) {
-        binding.progressBarFollower.progressBar.visibility = if(loading) View.VISIBLE else View.GONE
-    }
-
-    private fun showFollowerData(response: ArrayList<UserItems>) {
-        if (requireContext().resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            binding.rvFollowers.layoutManager = GridLayoutManager(requireContext(), 2)
-        } else {
-            binding.rvFollowers.layoutManager = LinearLayoutManager(requireContext())
+        binding?.apply {
+            progressbarFollowers.visibility = if (loading) View.VISIBLE else View.GONE
+            rvFollowers.isGone = loading
         }
-        val userAdapter = GithubUserAdapter(response)
-        binding.rvFollowers.adapter = userAdapter
-
-        userAdapter.setOnItemClickCallback(object : GithubUserAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: UserItems) {
-                val intent = Intent(requireContext(), DetailActivity::class.java)
-                intent.putExtra(DATA_TAG, data)
-                startActivity(intent)
-            }
-        })
     }
 }

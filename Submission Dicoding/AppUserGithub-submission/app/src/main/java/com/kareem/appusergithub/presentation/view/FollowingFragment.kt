@@ -1,81 +1,75 @@
 package com.kareem.appusergithub.presentation.view
 
-import android.content.Intent
-import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kareem.appusergithub.data.ViewModelFactory
-import com.kareem.appusergithub.data.remote.UserItems
-import com.kareem.appusergithub.presentation.adapter.GithubUserAdapter
 import com.kareem.appusergithub.databinding.FragmentFollowingBinding
-import com.kareem.appusergithub.presentation.adapter.SectionPagerAdapter
-import com.kareem.appusergithub.presentation.adapter.SectionPagerAdapter.Companion.BUNDLE
-import com.kareem.appusergithub.presentation.viewModel.MainViewModel
-import com.kareem.appusergithub.utils.ViewStateCallback
+import com.kareem.appusergithub.presentation.adapter.GithubUserAdapter
+import com.kareem.appusergithub.presentation.viewModel.FollowingViewModel
+import com.kareem.appusergithub.presentation.viewModel.ViewModelFactory
 
 /**
  * A simple [Fragment] subclass.
  * Use the [FollowingFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FollowingFragment : Fragment(){
-    private lateinit var binding: FragmentFollowingBinding
-    private lateinit var mainViewModel: MainViewModel
+class FollowingFragment : Fragment() {
+    private var _binding: FragmentFollowingBinding? = null
+    private val binding get() = _binding
+    private lateinit var followingViewModel: FollowingViewModel
+    private lateinit var detailActivity: DetailActivity
+    private lateinit var username: String
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentFollowingBinding.inflate(layoutInflater)
-        return binding.root
+        _binding = FragmentFollowingBinding.inflate(inflater, container, false)
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val username = arguments?.getString(BUNDLE)
+        detailActivity = activity as DetailActivity
+        username = detailActivity.getData()
 
-        val factory: ViewModelFactory = ViewModelFactory.getInstance(requireContext())
-        mainViewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
-        mainViewModel.getFollowing(username.toString())
-
-        mainViewModel.following.observe(viewLifecycleOwner){
-            listFollowing(it)
+        val uAdapter = GithubUserAdapter()
+        binding?.rvFollowing?.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+            this.adapter = uAdapter
         }
 
-        mainViewModel.isLoading.observe(viewLifecycleOwner, { loading ->
-            showLoading(loading)
-        })
+        showLoading(true)
+        showTextDummy(false)
+        followingViewModel = obtainFactory(context as AppCompatActivity)
+        followingViewModel.getFollowing(username).observe(viewLifecycleOwner){ followingList ->
+            if(followingList != null && followingList.isNotEmpty()){
+                showLoading(false)
+                showTextDummy(false)
+                uAdapter.setData(followingList)
+            }else{
+                showLoading(false)
+                showTextDummy(true)
+
+            }
+        }
+    }
+
+    private fun showTextDummy(state: Boolean) {
+        binding?.dummyFollowing?.isVisible = state
+    }
+    private fun obtainFactory(activity: AppCompatActivity): FollowingViewModel {
+        val factory: ViewModelFactory = ViewModelFactory.getInstance(activity.application)
+        return ViewModelProvider(this, factory)[FollowingViewModel::class.java]
     }
 
     private fun showLoading(loading: Boolean) {
-        binding.progressbarFollowing.visibility = if(loading) View.VISIBLE else View.GONE
+        binding?.progressbarFollowing?.visibility = if (loading) View.VISIBLE else View.GONE
     }
-
-    private fun listFollowing(response: ArrayList<UserItems>) {
-        if(requireContext().resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
-            binding.rvFollowing.layoutManager = GridLayoutManager(requireContext(), 2)
-        }else{
-            binding.rvFollowing.layoutManager = LinearLayoutManager(requireContext())
-        }
-
-
-
-        val uAdapter = GithubUserAdapter(response)
-        binding.rvFollowing.adapter = uAdapter
-
-        uAdapter.setOnItemClickCallback(object : GithubUserAdapter.OnItemClickCallback{
-            override fun onItemClicked(data: UserItems) {
-                val intent = Intent(requireContext(), DetailActivity::class.java)
-                intent.putExtra(BUNDLE, data)
-                startActivity(intent)
-            }
-
-        })
-    }
-
 
 }

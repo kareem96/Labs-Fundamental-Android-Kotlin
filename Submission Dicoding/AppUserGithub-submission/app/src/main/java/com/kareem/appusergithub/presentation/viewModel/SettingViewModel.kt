@@ -7,11 +7,12 @@ import androidx.lifecycle.viewModelScope
 import com.kareem.appusergithub.utils.SettingsMode
 import kotlinx.coroutines.launch
 
-class SettingViewModel(private val prefs:SettingsMode) : ViewModel(){
-    fun getThemeSettings(): LiveData<Boolean>{
+class SettingViewModel(private val prefs: SettingsMode) : ViewModel() {
+    fun getThemeSettings(): LiveData<Boolean> {
         return prefs.getThemeMode().asLiveData()
     }
-    fun saveThemeSettings(isDarkModeActive:Boolean){
+
+    fun saveThemeSettings(isDarkModeActive: Boolean) {
         viewModelScope.launch {
             prefs.saveThemeSetting(isDarkModeActive)
         }

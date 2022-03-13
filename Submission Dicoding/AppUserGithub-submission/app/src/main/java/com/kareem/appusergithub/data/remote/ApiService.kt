@@ -1,7 +1,9 @@
 package com.kareem.appusergithub.data.remote
 
 
-
+import com.kareem.appusergithub.data.model.UserItems
+import com.kareem.appusergithub.data.response.DetailResponse
+import com.kareem.appusergithub.data.response.SearchResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -21,7 +23,7 @@ interface ApiService {
     fun searchUser(
         @Query("q")
         query: String
-    ):Call<SearchResponse>
+    ): Call<SearchResponse>
 
     @GET("users/{username}/followers")
     @Headers("Accept:application/json")

@@ -20,7 +20,10 @@
     <string name="followers" translatable="false">Followers</string>
     <string name="detail_user" translatable="false">Detail</string>
     <string name="not_found_following" translatable="false">Not Found Following</string>
-    <string name="unstar">Unstar</string>
-    <string name="star">Star</string>
+    <string name="unstar" translatable="false">Unstar</string>
+    <string name="star" translatable="false">Star</string>
     <string name="change_theme">Change Theme</string>
+    <string name="tidak_ada_following">Tidak ada Following</string>
+    <string name="tidak_ada_follower" translatable="false">Tidak ada Follower</string>
+    <string name="temukan_user_github" translatable="false">Temukan pengguna Github</string>
 </resources>
